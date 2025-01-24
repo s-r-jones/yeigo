@@ -133,6 +133,7 @@ export class NewScript extends BaseScriptComponent {
       name: States.SET_HAND_HEIGHT,
       onEnter: (state) => {
         // show text instructions telling user to hold their phone in their hand at their side
+        textContainer.enabled = true;
         this.instructionText.enabled = true;
         this.instructionText.text =
           "Hold your phone in your hand, and hold your hand down at your side";

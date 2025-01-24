@@ -26,7 +26,7 @@ export class PhoneController extends BaseScriptComponent {
     if (!this.started) {
       this.started = true;
 
-      if (this.onPhoneTrackingStarted) this.onPhoneTrackingStarted(true);
+      this.onPhoneTrackingStarted(true);
     }
   }
 
@@ -42,9 +42,6 @@ export class PhoneController extends BaseScriptComponent {
   setOnPhoneTrackingStateChange(callback: (val?: boolean) => void) {
     ScreenLogger.getInstance().log("Setting onPhoneTrackingStateChange");
     this.onPhoneTrackingStarted = callback;
-    // this.controller.onControllerStateChange.add(
-    //   this.onPhoneTrackingStateChange
-    // );
   }
 
   clearOnPhoneTrackingStateChange() {
