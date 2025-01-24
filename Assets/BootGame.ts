@@ -8,9 +8,18 @@ import {
   clearTimeout,
 } from "./SpectaclesInteractionKit/Utils/debounce";
 
+type StateMachineConfig = {
+  stateMachine: StateMachine;
+  textContainer: SceneObject;
+  instructionText: Text;
+  groundPlacement: GroundPlacement;
+  phoneController: PhoneController;
+  audioPlayer?: AudioComponent;
+};
+
 enum States {
   INTRO = "Intro",
-  FLOOR_CALIBRATION = "FloorCalibration",
+  GROUND_CALIBRATION = "GroundCalibration",
   PHONE_CALIBRATION = "PhoneCalibration",
   SET_HAND_HEIGHT = "SetHandHeight",
   PHONE_IN_POCKET = "PhoneInPocket",
@@ -38,19 +47,37 @@ export class NewScript extends BaseScriptComponent {
     this.instructionText.text = "";
     this.instructionText.enabled = false;
     this.stateMachine = new StateMachine("GameStateMachine");
+
+    const config: StateMachineConfig = {
+      stateMachine: this.stateMachine,
+      textContainer: this.textContainer,
+      instructionText: this.instructionText,
+      groundPlacement: this.groundPlacement,
+      phoneController: this.phoneController,
+    };
+
+    this.setUpStateMachine(config);
+    this.stateMachine.enterState(States.GROUND_CALIBRATION);
   }
 
-  private setUpStateMachine(stateMachine: StateMachine) {
+  private setUpStateMachine = (config: StateMachineConfig) => {
+    const {
+      stateMachine,
+      textContainer,
+      instructionText,
+      groundPlacement,
+      phoneController,
+    } = config;
     stateMachine.addState({
-      name: States.INTRO,
-      onEnter(state) {
-        this.textContainer.enabled = true;
-        this.instructionText.enabled = true;
-        this.instructionText.text = "look at the ground to start";
-        this.groundPlacement.startSurfaceDetection((pos, rot) => {
-          this.textContainer.enabled = false;
-          this.instructionText.enabled = false;
-          this.instructionText.text = "";
+      name: States.GROUND_CALIBRATION,
+      onEnter: (state) => {
+        textContainer.enabled = true;
+        instructionText.enabled = true;
+        instructionText.text = "look at the ground to start";
+        groundPlacement.startSurfaceDetection((pos, rot) => {
+          textContainer.enabled = false;
+          instructionText.enabled = false;
+          instructionText.text = "";
 
           this.groundPosition = pos;
           this.groundRotation = rot;
@@ -73,27 +100,29 @@ export class NewScript extends BaseScriptComponent {
 
     stateMachine.addState({
       name: States.PHONE_CALIBRATION,
-      onEnter(state) {
+      onEnter: (state) => {
         // enable to text telling user to begin phone calibration
+        this.textContainer.enabled = true;
         this.instructionText.enabled = true;
         this.instructionText.text =
           "Enable Phone Controller mode within your Spectacles App";
 
-        this.phoneController.setOnPhoneTrackingStateChange((val) => {
-          if (val) {
-            // disable text
-            this.instructionText.enabled = false;
-            this.instructionText.text = "";
+        phoneController.setOnPhoneTrackingStateChange((val) => {
+          // disable text
+          ScreenLogger.getInstance().log("Phone Tracking State Change " + val);
+          this.instructionText.text = "";
+          this.instructionText.enabled = false;
 
-            stateMachine.sendSignal(States.SET_HAND_HEIGHT);
-          }
+          textContainer.enabled = false;
+
+          stateMachine.sendSignal(States.SET_HAND_HEIGHT);
         });
       },
       transitions: [
         {
           nextStateName: States.SET_HAND_HEIGHT,
           checkOnSignal(signal) {
-            this.phoneController.clearOnPhoneTrackingStateChange();
+            //this.phoneController.clearOnPhoneTrackingStateChange();
             return signal === States.SET_HAND_HEIGHT;
           },
         },
@@ -102,20 +131,23 @@ export class NewScript extends BaseScriptComponent {
 
     stateMachine.addState({
       name: States.SET_HAND_HEIGHT,
-      onEnter(state) {
+      onEnter: (state) => {
         // show text instructions telling user to hold their phone in their hand at their side
         this.instructionText.enabled = true;
         this.instructionText.text =
           "Hold your phone in your hand, and hold your hand down at your side";
 
-        setTimeout(() => {
-          // get transform from motion controller
-          this.handPosition = this.phoneController
-            .getTransform()
-            .getWorldPosition();
+        // when phone is in position trigger timeout?
+        // Add a confirm button?
 
-          ScreenLogger.getInstance().log("Hand Y " + this.handPosition.y);
-        }, 5000);
+        // setTimeout(() => {
+        //   // get transform from motion controller
+        //   this.handPosition = this.phoneController
+        //     .getTransform()
+        //     .getWorldPosition();
+
+        //   ScreenLogger.getInstance().log("Hand Y " + this.handPosition.y);
+        // }, 5000);
       },
       transitions: [
         {
@@ -126,5 +158,5 @@ export class NewScript extends BaseScriptComponent {
         },
       ],
     });
-  }
+  };
 }

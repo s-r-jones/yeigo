@@ -5,8 +5,9 @@ import { ScreenLogger } from "./ScreenLogger";
 @component
 export class PhoneController extends BaseScriptComponent {
   private transform;
+  private started = false;
   private controller;
-  private onPhoneTrackingStateChange: (val: boolean) => void;
+  private onPhoneTrackingStarted: (val?: boolean) => void | null = null;
   public isPhoneTracking: boolean = false;
   onAwake() {
     var options = MotionController.Options.create();
@@ -17,31 +18,36 @@ export class PhoneController extends BaseScriptComponent {
 
     this.transform = this.sceneObject.getTransform();
     this.controller.onTransformEvent.add(this.updateTransform.bind(this));
-
-    this.controller.onControllerStateChange.add(
-      this.trackingStateChange.bind(this)
-    );
   }
 
   updateTransform(position, rotation) {
     this.transform.setWorldPosition(position);
     this.transform.setWorldRotation(rotation);
+    if (!this.started) {
+      this.started = true;
+
+      if (this.onPhoneTrackingStarted) this.onPhoneTrackingStarted(true);
+    }
   }
 
   trackingStateChange(val) {
     this.isPhoneTracking = val;
-    ScreenLogger.getInstance().log("isTracking " + val);
+    //ScreenLogger.getInstance().log("isTracking " + val);
 
-    if (this.onPhoneTrackingStateChange) {
-      this.onPhoneTrackingStateChange(this.isPhoneTracking);
+    if (this.onPhoneTrackingStarted !== null) {
+      this.onPhoneTrackingStarted();
     }
   }
 
-  setOnPhoneTrackingStateChange(callback: (val: boolean) => void) {
-    this.onPhoneTrackingStateChange = callback;
+  setOnPhoneTrackingStateChange(callback: (val?: boolean) => void) {
+    ScreenLogger.getInstance().log("Setting onPhoneTrackingStateChange");
+    this.onPhoneTrackingStarted = callback;
+    // this.controller.onControllerStateChange.add(
+    //   this.onPhoneTrackingStateChange
+    // );
   }
 
   clearOnPhoneTrackingStateChange() {
-    this.onPhoneTrackingStateChange = null;
+    this.controller.onControllerStateChange.remove(this.onPhoneTrackingStarted);
   }
 }
