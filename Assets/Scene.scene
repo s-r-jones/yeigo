@@ -6,6 +6,9 @@
     - !<own> ff6c151e-214e-4216-8d76-8d4244e2a6e8
     - !<own> f68f0438-2abc-4fe4-afd7-77fb2758a16d
     - !<own> a603d3d6-a1dc-4424-9608-cf1a93eef604
+    - !<own> 78e0daff-ddba-4da7-adc0-c7851be30f2f
+    - !<own> 08d442ab-24d0-4d49-b5e2-9617b8110ccd
+    - !<own> 73cc2913-eba2-4d3f-a77d-0ea5de7412ba
     - !<own> 36a87162-9925-4cd1-a53e-63c0ca590c4c
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
@@ -27,7 +30,7 @@
     scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     hasSegmentScaleCompensation: false
   Children:
-    []
+    - !<own> d387093b-00a9-4e77-827f-d97a6674158b
   Components:
     - !<own> 00000000-0000-0065-0000-000000000065
     - !<own> e5553c8a-0b7e-4ef4-92d9-3e1318fb82c1
@@ -213,7 +216,7 @@
   PrefabRemaps:
     []
   Name: Image
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: -8.000000, z: 0.000000}
@@ -606,6 +609,31 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/08d442ab-24d0-4d49-b5e2-9617b8110ccd>
+  PrefabRemaps:
+    - 08d442ab-24d0-4d49-b5e2-9617b8110ccd: bac84bae-537b-4d0b-8620-64f591938376
+    - 11336a5d-40e4-466c-886a-b99b8bcb8ffc: 211877f4-df72-42da-8581-879f0148a339
+    - 11490e4a-ed42-4e42-91bd-99b7d1435f8c: 7f10c9e3-8a56-4d89-b5a3-b7de4cf71835
+    - 51b45cab-fbbc-462f-8a4c-25847fb92093: d7ad13ec-d8fa-4d57-a1af-e01f0fdbc213
+    - 793569d2-623a-45a4-8811-02e4619c9795: ac8f31bf-8528-4aca-bbfc-42021e32d876
+    - 814b7f01-ba7f-4850-b1cd-1d08c0c39c30: ca7a2d62-1e8b-45c0-88cd-52af7054cbb3
+    - 9b6a549d-1091-43f6-b371-13bcdbb25f0b: 751f5b94-d890-4635-b74c-3aaa61bb689f
+    - ba09c8fa-a679-434c-8ea6-c8c67811d8fa: 76913b13-c2a7-410b-b0ae-2e9a243fb775
+    - e682f351-ade8-466f-b22b-a30eadc68976: cfc7a77d-b612-4b73-9759-f3799be2c90b
+  Name: Example__ADD_TO_SCENE
+  Enabled: false
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> 11336a5d-40e4-466c-886a-b99b8bcb8ffc
+    - !<own> 793569d2-623a-45a4-8811-02e4619c9795
+    - !<own> 11490e4a-ed42-4e42-91bd-99b7d1435f8c
+  Components:
+    []
 - !<SceneObject/08fc906c-78bf-45df-99f5-35e77aea225d>
   PrefabRemaps:
     []
@@ -899,7 +927,7 @@
   PrefabRemaps:
     []
   Name: Button Mesh
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -979,6 +1007,37 @@
     bottom: 0.000000
     right: 0.000000
     top: 0.000000
+- !<SceneObject/11336a5d-40e4-466c-886a-b99b8bcb8ffc>
+  PrefabRemaps:
+    []
+  Name: Example_RawTween
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: -50.000000}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> ba09c8fa-a679-434c-8ea6-c8c67811d8fa
+- !<SceneObject/11490e4a-ed42-4e42-91bd-99b7d1435f8c>
+  PrefabRemaps:
+    []
+  Name: Example_ChainTween
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 23.503178, z: -50.000000}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 10.000000, y: 10.000000, z: 10.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 814b7f01-ba7f-4850-b1cd-1d08c0c39c30
+    - !<own> 9b6a549d-1091-43f6-b371-13bcdbb25f0b
 - !<Text3D/1161e9b5-dfd3-48af-bda0-382056faca0e>
   PrefabRemaps:
     []
@@ -1521,7 +1580,7 @@
 - !<SceneObject/19e3f246-4ee9-451b-890d-a969e21e7e69>
   PrefabRemaps:
     []
-  Name: "Example [EDIT ME]"
+  Name: GroundPlacementControl
   Enabled: true
   Layers: 1
   LocalTransform:
@@ -2941,7 +3000,7 @@
   PrefabRemaps:
     []
   Name: Button Mesh
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -3559,6 +3618,26 @@
     - !<own> dcf6aa57-0caa-4b44-a73b-2e33da4f1428
   Components:
     []
+- !<RenderMeshVisual/407047ce-b8a8-4e1a-b7c2-78737e8b8c06>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 43ac6799-c1bd-498c-878d-16378a49f6ba
+  Mesh: !<reference> c65cfd38-9aa8-4632-8b1b-515cf0ad829d
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
 - !<SceneObject/40a2ea5b-f164-48c5-8ffc-c3dfcacc6d91>
   PrefabRemaps:
     []
@@ -4255,6 +4334,26 @@
   ScriptTypes:
     "":
       {}
+- !<RenderMeshVisual/51b45cab-fbbc-462f-8a4c-25847fb92093>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> a6a01d7f-4c08-4cbf-adee-52f6eaacde41
+  Mesh: !<reference> f3cc8afc-cb20-4193-bb1a-39f896f0cd9a
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
 - !<ScriptComponent/525d0fdd-36a2-4565-9996-219b72385dc5>
   PrefabRemaps:
     []
@@ -4590,7 +4689,7 @@
   PrefabRemaps:
     []
   Name: ScrollViewCanvasExample
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: -40.000000, y: 0.000000, z: -60.000000}
@@ -4605,7 +4704,7 @@
   PrefabRemaps:
     []
   Name: ToggleButtonSphereExample Mid Bottom Center
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 9.500000, z: 1.000000}
@@ -4671,7 +4770,7 @@
   PrefabRemaps:
     []
   Name: PinchButtonCapsuleExample
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: -11.000000, z: -60.000000}
@@ -4778,6 +4877,22 @@
   BodySettingValue: 1.000000
   Damping: 0.000000
   AngularDamping: 0.000000
+- !<ScriptComponent/5a658daf-fa78-46b4-a1db-45e2ff566eb4>
+  PrefabRemaps:
+    []
+  Name: MotionController
+  Enabled: true
+  ScriptAsset: !<reference> e31ee78a-9eff-4620-ba28-7c1d98a12b3c
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/5a8852ff-ecda-4881-abe7-1ceb2c524c26>
   PrefabRemaps:
     []
@@ -5701,7 +5816,7 @@
   PrefabRemaps:
     []
   Name: ExtendableCapsuleExample
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: -17.000000, z: -60.000000}
@@ -6248,7 +6363,7 @@
   PrefabRemaps:
     []
   Name: ToggleButtonSphereExample Mid Bottom Right
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 5.000000, y: 9.500000, z: 1.000000}
@@ -6513,6 +6628,21 @@
     []
   Components:
     - !<own> fc6a94ee-23d6-4637-a73b-30ac1b571eca
+- !<SceneObject/73cc2913-eba2-4d3f-a77d-0ea5de7412ba>
+  PrefabRemaps:
+    []
+  Name: MotionController
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> 8e7a86e3-051b-4a36-976e-24ae220c53b3
+  Components:
+    - !<own> 5a658daf-fa78-46b4-a1db-45e2ff566eb4
 - !<SceneObject/73e0b27a-6485-47b6-8403-ad1a30991aec>
   PrefabRemaps:
     []
@@ -6869,11 +6999,31 @@
     []
   Components:
     - !<own> de62f5f3-2f86-4c98-b357-a44d603496f1
+- !<ScriptComponent/78b44757-02c6-4cc7-b148-369f595dd21b>
+  PrefabRemaps:
+    []
+  Name: BootGame
+  Enabled: true
+  ScriptAsset: !<reference> 6d57a8d7-d56a-49f6-b8e6-921846958264
+  ScriptInputsDefault:
+    audioPlayer: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      instructionText: !<reference.Text> a45d9874-f37c-41c9-b74b-fc5b8b804b30
+      groundPlacement: !<MappingBased.GroundPlacement> acd895d5-70d4-4056-a5c5-3eae2fc4cfb4
+      textContainer: !<reference.SceneObject> d387093b-00a9-4e77-827f-d97a6674158b
+      audioPlayer: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      phoneController: !<MappingBased.MotionController> 5a658daf-fa78-46b4-a1db-45e2ff566eb4
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/78df9761-cce5-4f60-b157-14385776c01d>
   PrefabRemaps:
     []
   Name: ToggleButtonCapsuleExample
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: -5.000000, z: -60.000000}
@@ -6894,6 +7044,37 @@
     - !<own> ebf29903-e778-4ba0-b2bd-8925aa9f4872
     - !<own> cd908cfd-824a-41cc-9781-34ee591c98cf
     - !<own> f3ab0ac5-9a4f-4928-a3f2-e2c9ac4d084f
+- !<SceneObject/78e0daff-ddba-4da7-adc0-c7851be30f2f>
+  PrefabRemaps:
+    []
+  Name: BootGame
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 78b44757-02c6-4cc7-b148-369f595dd21b
+- !<SceneObject/793569d2-623a-45a4-8811-02e4619c9795>
+  PrefabRemaps:
+    []
+  Name: Example_YoyoTween
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: -25.000000, y: 0.000000, z: -50.000000}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 10.000000, y: 10.000000, z: 10.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 51b45cab-fbbc-462f-8a4c-25847fb92093
+    - !<own> e682f351-ade8-466f-b22b-a30eadc68976
 - !<ScriptComponent/7a2899c3-b02c-4f81-9a90-ed8511366a54>
   PrefabRemaps:
     []
@@ -7243,6 +7424,26 @@
   ScriptTypes:
     "":
       {}
+- !<RenderMeshVisual/814b7f01-ba7f-4850-b1cd-1d08c0c39c30>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> a6a01d7f-4c08-4cbf-adee-52f6eaacde41
+  Mesh: !<reference> c65cfd38-9aa8-4632-8b1b-515cf0ad829d
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
 - !<ScriptComponent/81841dbe-6094-46d2-8036-d4fe8d5e3d63>
   PrefabRemaps:
     []
@@ -7987,6 +8188,21 @@
     bottom: 0.000000
     right: 0.000000
     top: 0.000000
+- !<SceneObject/8e7a86e3-051b-4a36-976e-24ae220c53b3>
+  PrefabRemaps:
+    []
+  Name: Box
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 10.000000, y: 10.000000, z: 10.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 407047ce-b8a8-4e1a-b7c2-78737e8b8c06
 - !<SceneObject/8e8470af-1ad4-4317-96d6-2bd90d653cbb>
   PrefabRemaps:
     []
@@ -8021,7 +8237,7 @@
   PrefabRemaps:
     []
   Name: ToggleButtonSphereExample
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: -10.000000, y: -5.000000, z: -60.000000}
@@ -8299,27 +8515,28 @@
   ScriptInputsDefault:
     border: true
     constantPadding: true
-    allowScaling: true
     autoScaleContent: true
     isContentInteractable: true
-    allowTranslation: true
     xAlways: true
     yAlways: true
     worldSnapping: true
+    showFollowButton: true
+    useFOVFollow: true
     isFollowing: true
+    _enableInteractionPlane: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       autoShowHide: false
-      innerSize: !<Vec2> {x: 16.000000, y: 32.000000}
+      innerSize: !<Vec2> {x: 12.000000, y: 4.000000}
       border: !<float> 4.000000
       constantPadding: !<Vec2> {x: 0.000000, y: 0.000000}
-      allowScaling: true
+      allowScaling: false
       autoScaleContent: true
       isContentInteractable: false
-      allowTranslation: true
-      minimumSize: !<Vec2> {x: 8.000000, y: 8.000000}
+      allowTranslation: false
+      minimumSize: !<Vec2> {x: 4.000000, y: 4.000000}
       maximumSize: !<Vec2> {x: 200.000000, y: 200.000000}
       useBillboarding: true
       xOnTranslate: true
@@ -8329,11 +8546,11 @@
       useSnapping: true
       itemSnapping: true
       worldSnapping: false
-      showFollowButton: true
-      useFOVFollow: true
+      showFollowButton: false
+      useFOVFollow: false
       isFollowing: false
       showCloseButton: false
-      _enableInteractionPlane: true
+      _enableInteractionPlane: false
   ScriptTypes:
     "":
       {}
@@ -8458,7 +8675,7 @@
   PrefabRemaps:
     []
   Name: ToggleButtonSphereExample Mid Bottom Left
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: -5.000000, y: 9.500000, z: 1.000000}
@@ -8539,6 +8756,22 @@
     - !<own> 9f9bcf5b-6b30-496e-b734-5aa240e969c5
   Components:
     []
+- !<ScriptComponent/9b6a549d-1091-43f6-b371-13bcdbb25f0b>
+  PrefabRemaps:
+    []
+  Name: Example_ChainTween
+  Enabled: true
+  ScriptAsset: !<reference> ade72132-f046-4552-b447-11d166983d07
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/9c5d0a62-61e2-4cee-a999-b414d94681f4>
   PrefabRemaps:
     []
@@ -9072,12 +9305,12 @@
   MeshShadowMode: None
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
-  Text: Container Frame
+  Text: Hello
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
   SizeToFit: false
-  FontSize: 74
+  FontSize: 68
   Font: !<reference> 709203b6-8b83-40d7-8dda-e5adc4fd2875
   LayoutRect:
     left: -7.500000
@@ -9321,7 +9554,7 @@
     - e6a93515-3480-4349-992b-58e2897320ce: 51b645cd-285a-4e66-afa3-219f4ff62448
     - ebd449c6-20b4-4830-b2fa-49a926ed63b0: 1310f45e-97d3-4c31-9463-82a46060a0b2
   Name: SurfaceDetection
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -10184,6 +10417,22 @@
     bottom: 0.000000
     right: 0.000000
     top: 0.000000
+- !<ScriptComponent/ba09c8fa-a679-434c-8ea6-c8c67811d8fa>
+  PrefabRemaps:
+    []
+  Name: Example_RawTween
+  Enabled: true
+  ScriptAsset: !<reference> b0d5bef8-e20d-45c7-adb6-781fd46e71bc
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
 - !<ScreenTransform/bb11bac7-b260-481e-b248-3310cae98857>
   PrefabRemaps:
     []
@@ -10832,7 +11081,7 @@
   PrefabRemaps:
     []
   Name: PinchButtonSphereExample
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: -10.000000, y: -11.000000, z: -60.000000}
@@ -11285,7 +11534,7 @@
   PrefabRemaps:
     []
   Name: SliderExample Mid
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 4.000000, z: 1.000000}
@@ -11361,7 +11610,7 @@
   Enabled: true
   Layers: 1
   LocalTransform:
-    position: {x: 55.000000, y: -5.000000, z: -65.000000}
+    position: {x: 0.000000, y: 0.000000, z: -65.000000}
     rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
     scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     hasSegmentScaleCompensation: false
@@ -11520,7 +11769,7 @@
   PrefabRemaps:
     []
   Name: BillboardExample
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 10.000000, z: -60.000000}
@@ -11889,7 +12138,7 @@
   PrefabRemaps:
     []
   Name: SliderExample
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 1.000000, z: -60.000000}
@@ -11913,7 +12162,7 @@
   Enabled: true
   Layers: 1
   LocalTransform:
-    position: {x: 0.000000, y: 14.000000, z: 1.000000}
+    position: {x: 0.000000, y: 1.000000, z: 1.000000}
     rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     hasSegmentScaleCompensation: false
@@ -12111,6 +12360,22 @@
     InvertRotation: false
   SurfaceOptions: !<SurfaceOptions>
     EnhanceWithNativeAR: false
+- !<ScriptComponent/e682f351-ade8-466f-b22b-a30eadc68976>
+  PrefabRemaps:
+    []
+  Name: Example_YoyoTween
+  Enabled: true
+  ScriptAsset: !<reference> 5046827d-bec2-49a2-b3a9-efcb883113dd
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/e769c593-4515-4020-a2bf-11dd93208bc4>
   PrefabRemaps:
     []
@@ -12775,7 +13040,6 @@
     - !<own> da621398-4472-42c0-9dd2-b55cbd96c86c
     - !<own> c7ce6262-5a95-4210-8fa0-05580c6a88db
     - !<own> 68ad7faa-9aea-44b5-b204-85da6adb9bc9
-    - !<own> d387093b-00a9-4e77-827f-d97a6674158b
   Components:
     []
 - !<RenderMeshVisual/f1b07035-2368-4bb3-97d2-06364c05f94c>
