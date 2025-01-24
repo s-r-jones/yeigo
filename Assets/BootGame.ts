@@ -135,20 +135,21 @@ export class NewScript extends BaseScriptComponent {
         // show text instructions telling user to hold their phone in their hand at their side
         textContainer.enabled = true;
         this.instructionText.enabled = true;
-        this.instructionText.text =
-          "Hold your phone in your hand, and hold your hand down at your side";
+        this.instructionText.text = "hold your hand & phone down at your side";
 
         // when phone is in position trigger timeout?
         // Add a confirm button?
 
-        // setTimeout(() => {
-        //   // get transform from motion controller
-        //   this.handPosition = this.phoneController
-        //     .getTransform()
-        //     .getWorldPosition();
+        setTimeout(() => {
+          // get transform from motion controller
+          this.handPosition = this.phoneController
+            .getTransform()
+            .getWorldPosition();
 
-        //   ScreenLogger.getInstance().log("Hand Y " + this.handPosition.y);
-        // }, 5000);
+          ScreenLogger.getInstance().log("Hand Y " + this.handPosition.y);
+
+          stateMachine.sendSignal(States.PHONE_IN_POCKET);
+        }, 5000);
       },
       transitions: [
         {
@@ -158,6 +159,43 @@ export class NewScript extends BaseScriptComponent {
           },
         },
       ],
+    });
+
+    stateMachine.addState({
+      name: States.PHONE_IN_POCKET,
+      onEnter: (state) => {
+        // show text instructions telling user to put their phone in their pocket
+        textContainer.enabled = true;
+        this.instructionText.enabled = true;
+        this.instructionText.text = "put your phone in your back pocket";
+
+        setTimeout(() => {
+          ScreenLogger.getInstance().log("Phone in pocket");
+          stateMachine.sendSignal(States.FOLLOW);
+        }, 5000);
+      },
+      transitions: [
+        {
+          nextStateName: States.FOLLOW,
+          checkOnSignal(signal) {
+            textContainer.enabled = false;
+            instructionText.enabled = false;
+            instructionText.text = "";
+            return signal === States.FOLLOW;
+          },
+        },
+      ],
+    });
+
+    stateMachine.addState({
+      name: States.FOLLOW,
+      onEnter: () => {
+        textContainer.enabled = true;
+        this.instructionText.enabled = true;
+        this.instructionText.text = "Grab the walker and follow the path";
+
+        // start head data collection
+      },
     });
   };
 }
