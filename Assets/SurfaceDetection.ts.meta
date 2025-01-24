@@ -1,0 +1,44 @@
+- !<AssetImportMetadata/932696ec-d063-43e1-a7f7-2e7b26a68ef7>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 74073c55-8fc2-4060-bb99-efa09362cd8c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 74073c55-8fc2-4060-bb99-efa09362cd8c
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 99ca7417-c786-4769-a8d0-96542f204a30
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings/771d4c51-c0c9-4c64-8bc9-c1d3b8d5e505>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/99ca7417-c786-4769-a8d0-96542f204a30>
+  SvgIcon: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 00000000-0000-0000-0000-000000000000
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    animation: false
+    camObj: false
+    visualObj: false
+  ScriptTypesHidden:
+    {}
+  DefaultScriptInputs:
+    - camObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      visualObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      animation: !<MappingBased.CircleAnimation> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject camObj
+    - // @input SceneObject visualObj
+    - // @input CircleAnimation animation

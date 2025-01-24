@@ -1,0 +1,16 @@
+- !<AssetImportMetadata/00602420-fc95-49c6-902c-a8bed2b077d6>
+  ImportedAssetIds:
+    MotionControllerModule: !<reference> f9835024-b107-46cb-aebe-edb36c37f70b
+  ImporterName: MotionControllerModuleImporter
+  PrimaryAsset: !<reference> f9835024-b107-46cb-aebe-edb36c37f70b
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    {}
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings/b918483c-1e50-4f3d-aaa5-a18114c98e74>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
