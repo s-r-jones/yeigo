@@ -6,6 +6,7 @@
     - !<own> ff6c151e-214e-4216-8d76-8d4244e2a6e8
     - !<own> f68f0438-2abc-4fe4-afd7-77fb2758a16d
     - !<own> a603d3d6-a1dc-4424-9608-cf1a93eef604
+    - !<own> 36a87162-9925-4cd1-a53e-63c0ca590c4c
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       []
@@ -185,7 +186,7 @@
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}
     rotation: {x: -90.000000, y: -0.000000, z: 0.000000}
-    scale: {x: 500.000000, y: 500.000000, z: 5.555556}
+    scale: {x: 45.000000, y: 45.000000, z: 0.500000}
     hasSegmentScaleCompensation: false
   Children:
     []
@@ -3020,6 +3021,24 @@
   ScriptTypes:
     "":
       {}
+- !<ScriptComponent/3141a75f-3d4d-452a-8519-c258bbeca768>
+  PrefabRemaps:
+    []
+  Name: ScreenLogger
+  Enabled: true
+  ScriptAsset: !<reference> 61fed71e-9944-48e3-8e58-f070868a7576
+  ScriptInputsDefault:
+    debugCube: true
+    font: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      debugCube: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      font: !<reference.Font> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/31df5cf9-9877-4359-9161-92964449a557>
   PrefabRemaps:
     []
@@ -3260,6 +3279,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/36a87162-9925-4cd1-a53e-63c0ca590c4c>
+  PrefabRemaps:
+    []
+  Name: ScreenLogger
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 3141a75f-3d4d-452a-8519-c258bbeca768
 - !<ScriptComponent/3769366f-4444-45f8-81e8-f14b3c8a0645>
   PrefabRemaps:
     []
@@ -3282,7 +3316,7 @@
   PrefabRemaps:
     []
   Name: cube
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 15.000000, z: 0.000000}
@@ -12724,7 +12758,7 @@
   PrefabRemaps:
     []
   Name: "[EXAMPLES] Simple UI"
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}

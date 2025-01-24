@@ -1,5 +1,5 @@
 import { SurfaceDetection } from "./SurfaceDetection";
-
+import { ScreenLogger } from "./ScreenLogger";
 @component
 export class GroundPlacement extends BaseScriptComponent {
   @input
@@ -20,7 +20,7 @@ export class GroundPlacement extends BaseScriptComponent {
     });
   }
 
-  startSurfaceDetection() {
+  public startSurfaceDetection() {
     this.objectVisuals.enabled = false;
     this.surfaceDetection.startGroundCalibration((pos, rot) => {
       this.onSurfaceDetected(pos, rot);
@@ -31,5 +31,6 @@ export class GroundPlacement extends BaseScriptComponent {
     this.objectVisuals.enabled = true;
     this.cubeTrans.setWorldPosition(pos);
     this.cubeTrans.setWorldRotation(rot);
+    ScreenLogger.getInstance().log("Surface detected");
   }
 }

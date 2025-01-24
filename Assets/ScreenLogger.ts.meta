@@ -1,0 +1,41 @@
+- !<AssetImportMetadata/f5530ab2-4910-484d-bb93-91cfaddf17cd>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 61fed71e-9944-48e3-8e58-f070868a7576
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 61fed71e-9944-48e3-8e58-f070868a7576
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 6fb71982-4fcf-4c3c-b3cf-5d90b36ba49d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings/05a61cbc-c74d-43fa-afac-634580d01691>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/6fb71982-4fcf-4c3c-b3cf-5d90b36ba49d>
+  SvgIcon: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 00000000-0000-0000-0000-000000000000
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    debugCube: false
+    font: false
+  ScriptTypesHidden:
+    {}
+  DefaultScriptInputs:
+    - debugCube: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      font: !<reference.Font> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Asset.ObjectPrefab debugCube
+    - // @input Asset.Font font
