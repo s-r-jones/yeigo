@@ -7011,6 +7011,7 @@
     {}
   ScriptInputs:
     "":
+      camObject: !<reference.SceneObject> 00000000-0000-0065-0000-000000000064
       instructionText: !<reference.Text> a45d9874-f37c-41c9-b74b-fc5b8b804b30
       groundPlacement: !<MappingBased.GroundPlacement> acd895d5-70d4-4056-a5c5-3eae2fc4cfb4
       textContainer: !<reference.SceneObject> d387093b-00a9-4e77-827f-d97a6674158b

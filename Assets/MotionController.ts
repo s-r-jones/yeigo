@@ -6,7 +6,7 @@ import { ScreenLogger } from "./ScreenLogger";
 export class PhoneController extends BaseScriptComponent {
   private transform;
   private controller;
-  private onPhoneTrackingStateChange: () => void;
+  private onPhoneTrackingStateChange: (val: boolean) => void;
   public isPhoneTracking: boolean = false;
   onAwake() {
     var options = MotionController.Options.create();
@@ -33,11 +33,11 @@ export class PhoneController extends BaseScriptComponent {
     ScreenLogger.getInstance().log("isTracking " + val);
 
     if (this.onPhoneTrackingStateChange) {
-      this.onPhoneTrackingStateChange();
+      this.onPhoneTrackingStateChange(this.isPhoneTracking);
     }
   }
 
-  setOnPhoneTrackingStateChange(callback: () => void) {
+  setOnPhoneTrackingStateChange(callback: (val: boolean) => void) {
     this.onPhoneTrackingStateChange = callback;
   }
 

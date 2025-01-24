@@ -27,6 +27,7 @@
   MaxVisibility: Editable
   ScriptInputsHidden:
     audioPlayer: false
+    camObject: false
     groundPlacement: false
     instructionText: false
     phoneController: false
@@ -39,10 +40,12 @@
       audioPlayer: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
       textContainer: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       phoneController: !<MappingBased.MotionController> 00000000-0000-0000-0000-000000000000
+      camObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
+    - // @input SceneObject camObject
     - // @input Component.Text instructionText
     - // @input GroundPlacement groundPlacement
     - // @input SceneObject textContainer
