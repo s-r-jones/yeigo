@@ -10,6 +10,7 @@
     - !<own> 78e0daff-ddba-4da7-adc0-c7851be30f2f
     - !<own> 08d442ab-24d0-4d49-b5e2-9617b8110ccd
     - !<own> 73cc2913-eba2-4d3f-a77d-0ea5de7412ba
+    - !<own> 4c01b712-e94f-4800-a917-4abc06e70d57
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       []
@@ -4094,6 +4095,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/4c01b712-e94f-4800-a917-4abc06e70d57>
+  PrefabRemaps:
+    []
+  Name: Box
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 10.000000, y: 10.000000, z: 30.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> bede9771-f0b1-4fc0-ad28-5a8d589925dd
 - !<SceneObject/4c4e9a6b-53dd-4a6b-8312-ea20dd40ff2c>
   PrefabRemaps:
     []
@@ -7063,6 +7079,7 @@
       textContainer: !<reference.SceneObject> d387093b-00a9-4e77-827f-d97a6674158b
       audioPlayer: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
       phoneController: !<MappingBased.MotionController> 5a658daf-fa78-46b4-a1db-45e2ff566eb4
+      walkerMarker: !<reference.SceneObject> 4c01b712-e94f-4800-a917-4abc06e70d57
   ScriptTypes:
     "":
       {}
@@ -10659,6 +10676,26 @@
     - !<own> d180e208-2df8-4507-8437-213a1fbd5da6
   Components:
     []
+- !<RenderMeshVisual/bede9771-f0b1-4fc0-ad28-5a8d589925dd>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> e7aa3594-4971-4641-aac5-2e364a1886fb
+  Mesh: !<reference> c65cfd38-9aa8-4632-8b1b-515cf0ad829d
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
 - !<Text/bf4229f1-c6a5-48d1-a38f-f04b89258a5f>
   PrefabRemaps:
     []

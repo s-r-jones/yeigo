@@ -38,10 +38,13 @@ export class NewScript extends BaseScriptComponent {
 
   @input phoneController: PhoneController;
 
+  @input walkerMarker: SceneObject;
+
   private stateMachine: StateMachine;
   private handPosition: vec3;
   private groundPosition: vec3;
   private groundRotation: quat;
+  private cameraStartPosition: vec3;
   onAwake() {
     this.textContainer.enabled = false;
     this.instructionText.text = "";
@@ -146,6 +149,8 @@ export class NewScript extends BaseScriptComponent {
             .getTransform()
             .getWorldPosition();
 
+          // spawn marker sceneobject oriented correctly. perfectly aligned on the z axis
+
           ScreenLogger.getInstance().log("Hand Y " + this.handPosition.y);
 
           stateMachine.sendSignal(States.PHONE_IN_POCKET);
@@ -193,6 +198,11 @@ export class NewScript extends BaseScriptComponent {
         textContainer.enabled = true;
         this.instructionText.enabled = true;
         this.instructionText.text = "Grab the walker and follow the path";
+
+        // record camera position
+        this.cameraStartPosition = this.camObject
+          .getTransform()
+          .getWorldPosition();
 
         // start head data collection
       },

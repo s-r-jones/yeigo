@@ -32,6 +32,7 @@
     instructionText: false
     phoneController: false
     textContainer: false
+    walkerMarker: false
   ScriptTypesHidden:
     {}
   DefaultScriptInputs:
@@ -41,6 +42,7 @@
       textContainer: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       phoneController: !<MappingBased.MotionController> 00000000-0000-0000-0000-000000000000
       camObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      walkerMarker: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -51,3 +53,4 @@
     - // @input SceneObject textContainer
     - // @input Component.AudioComponent audioPlayer
     - // @input MotionController phoneController
+    - // @input SceneObject walkerMarker
