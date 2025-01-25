@@ -5,7 +5,7 @@ import { lerp } from "./SpectaclesInteractionKit/Utils/mathUtils";
 export class HeadData extends BaseScriptComponent {
   @input camObject: SceneObject;
   @input warningUI: SceneObject;
-  @input distanceThreshold: number = -5;
+  @input distanceThreshold: number = -7;
 
   private headStartPosition: vec3 | null = null;
   private currentHeadRotation: quat;

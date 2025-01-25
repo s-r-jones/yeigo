@@ -27,6 +27,7 @@
   MaxVisibility: Editable
   ScriptInputsHidden:
     audioPlayer: false
+    calibrationUISteps: false
     camObject: false
     groundPlacement: false
     headData: false
@@ -45,10 +46,13 @@
       camObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       walkerMarker: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       headData: !<MappingBased.HeadData> 00000000-0000-0000-0000-000000000000
+      calibrationUISteps: !<reference.SceneObject[]>
+        []
   ScriptTypes:
     -
       {}
   InputLines:
+    - "// @input SceneObject[] calibrationUISteps"
     - // @input SceneObject camObject
     - // @input Component.Text instructionText
     - // @input GroundPlacement groundPlacement

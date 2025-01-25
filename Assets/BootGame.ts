@@ -25,10 +25,14 @@ enum States {
   SET_HAND_HEIGHT = "SetHandHeight",
   PHONE_IN_POCKET = "PhoneInPocket",
   FOLLOW = "Follow",
+  GET_WALKER = "GetWalker",
+  STAND_STRAIGHT = "StandStraight",
+  DONT_LEAN = "DontLean",
 }
 
 @component
 export class NewScript extends BaseScriptComponent {
+  @input calibrationUISteps: SceneObject[];
   @input camObject: SceneObject;
   @input instructionText: Text;
   @input groundPlacement: GroundPlacement;
@@ -115,10 +119,7 @@ export class NewScript extends BaseScriptComponent {
       name: States.PHONE_CALIBRATION,
       onEnter: (state) => {
         // enable to text telling user to begin phone calibration
-        this.textContainer.enabled = true;
-        this.instructionText.enabled = true;
-        this.instructionText.text =
-          "Enable Phone Controller mode within your Spectacles App";
+        this.calibrationUISteps[0].enabled = true;
 
         phoneController.setOnPhoneTrackingStateChange((val) => {
           // disable text
@@ -135,8 +136,11 @@ export class NewScript extends BaseScriptComponent {
         {
           nextStateName: States.SET_HAND_HEIGHT,
           checkOnSignal(signal) {
-            //this.phoneController.clearOnPhoneTrackingStateChange();
             return signal === States.SET_HAND_HEIGHT;
+          },
+          onExecution() {
+            this.phoneController.clearOnPhoneTrackingStateChange();
+            this.calibrationUISteps[0].enabled = false;
           },
         },
       ],
@@ -146,9 +150,7 @@ export class NewScript extends BaseScriptComponent {
       name: States.SET_HAND_HEIGHT,
       onEnter: (state) => {
         // show text instructions telling user to hold their phone in their hand at their side
-        textContainer.enabled = true;
-        this.instructionText.enabled = true;
-        this.instructionText.text = "hold your hand & phone down at your side";
+        this.calibrationUISteps[1].enabled = true;
 
         // when phone is in position trigger timeout?
         // Add a confirm button?
@@ -161,20 +163,20 @@ export class NewScript extends BaseScriptComponent {
             .add(new vec3(0, 10, -5));
 
           this.walkerMarker.getTransform().setWorldPosition(this.handPosition);
-          // this.walkerMarker
-          //   .getTransform()
-          //   .setWorldRotation(this.groundRotation);
 
           this.walkerMarker.enabled = true;
 
           stateMachine.sendSignal(States.PHONE_IN_POCKET);
-        }, 5000);
+        }, 15000);
       },
       transitions: [
         {
           nextStateName: States.PHONE_IN_POCKET,
           checkOnSignal(signal) {
             return signal === States.PHONE_IN_POCKET;
+          },
+          onExecution() {
+            this.calibrationUISteps[1].enabled = false;
           },
         },
       ],
@@ -184,23 +186,74 @@ export class NewScript extends BaseScriptComponent {
       name: States.PHONE_IN_POCKET,
       onEnter: (state) => {
         // show text instructions telling user to put their phone in their pocket
-        textContainer.enabled = true;
-        this.instructionText.enabled = true;
-        this.instructionText.text = "put your phone in your back pocket";
+        this.calibrationUISteps[2].enabled = true;
 
         setTimeout(() => {
-          ScreenLogger.getInstance().log("Phone in pocket");
-          stateMachine.sendSignal(States.FOLLOW);
+          stateMachine.sendSignal(States.GET_WALKER);
         }, 5000);
+      },
+      transitions: [
+        {
+          nextStateName: States.GET_WALKER,
+          checkOnSignal(signal) {
+            return signal === States.GET_WALKER;
+          },
+          onExecution() {
+            this.calibrationUISteps[2].enabled = false;
+          },
+        },
+      ],
+    });
+
+    stateMachine.addState({
+      name: States.GET_WALKER,
+      onEnter: () => {
+        this.calibrationUISteps[3].enabled = true;
+      },
+      transitions: [
+        {
+          nextStateName: States.STAND_STRAIGHT,
+          checkOnSignal(signal) {
+            return signal === States.STAND_STRAIGHT;
+          },
+          onExecution() {
+            this.calibrationUISteps[3].enabled = false;
+          },
+        },
+      ],
+    });
+
+    stateMachine.addState({
+      name: States.STAND_STRAIGHT,
+      onEnter: () => {
+        this.calibrationUISteps[4].enabled = true;
+      },
+      transitions: [
+        {
+          nextStateName: States.DONT_LEAN,
+          checkOnSignal(signal) {
+            return signal === States.DONT_LEAN;
+          },
+          onExecution() {
+            this.calibrationUISteps[4].enabled = false;
+          },
+        },
+      ],
+    });
+
+    stateMachine.addState({
+      name: States.DONT_LEAN,
+      onEnter: () => {
+        this.calibrationUISteps[5].enabled = true;
       },
       transitions: [
         {
           nextStateName: States.FOLLOW,
           checkOnSignal(signal) {
-            textContainer.enabled = false;
-            instructionText.enabled = false;
-            instructionText.text = "";
             return signal === States.FOLLOW;
+          },
+          onExecution() {
+            this.calibrationUISteps[5].enabled = false;
           },
         },
       ],
@@ -209,6 +262,7 @@ export class NewScript extends BaseScriptComponent {
     stateMachine.addState({
       name: States.FOLLOW,
       onEnter: () => {
+        // consider adding this to prev state transition onExecte
         this.cameraStartPosition = this.camObject
           .getTransform()
           .getWorldPosition();
@@ -218,9 +272,7 @@ export class NewScript extends BaseScriptComponent {
         this.instructionText.enabled = true;
         this.instructionText.text = "Grab the walker and follow the path";
 
-        // record camera position
-
-        // start head data collection
+        // show ui 4 and then 5
       },
     });
   };
