@@ -149,6 +149,11 @@ export class NewScript extends BaseScriptComponent {
             .getTransform()
             .getWorldPosition();
 
+          this.walkerMarker.getTransform().setWorldPosition(this.handPosition);
+          this.walkerMarker
+            .getTransform()
+            .setWorldRotation(this.groundRotation);
+
           // spawn marker sceneobject oriented correctly. perfectly aligned on the z axis
 
           ScreenLogger.getInstance().log("Hand Y " + this.handPosition.y);

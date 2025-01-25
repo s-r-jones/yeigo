@@ -11,6 +11,7 @@
     - !<own> 08d442ab-24d0-4d49-b5e2-9617b8110ccd
     - !<own> 73cc2913-eba2-4d3f-a77d-0ea5de7412ba
     - !<own> 4c01b712-e94f-4800-a917-4abc06e70d57
+    - !<own> c77e39b2-1852-4fab-8e63-1878f543a8f5
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       []
@@ -4099,12 +4100,12 @@
   PrefabRemaps:
     []
   Name: Box
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}
     rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    scale: {x: 10.000000, y: 10.000000, z: 30.000000}
+    scale: {x: 5.000000, y: 5.000000, z: 15.000000}
     hasSegmentScaleCompensation: false
   Children:
     []
@@ -7079,7 +7080,7 @@
       textContainer: !<reference.SceneObject> d387093b-00a9-4e77-827f-d97a6674158b
       audioPlayer: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
       phoneController: !<MappingBased.MotionController> 5a658daf-fa78-46b4-a1db-45e2ff566eb4
-      walkerMarker: !<reference.SceneObject> 4c01b712-e94f-4800-a917-4abc06e70d57
+      walkerMarker: !<reference.SceneObject> c77e39b2-1852-4fab-8e63-1878f543a8f5
   ScriptTypes:
     "":
       {}
@@ -7986,6 +7987,26 @@
     bottom: 0.000000
     right: 0.000000
     top: 0.000000
+- !<RenderMeshVisual/89b38745-ef24-4bde-b0d4-c8840ed4e8ca>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 666e4fbc-d860-49b7-ae11-cedd4904a430
+  Mesh: !<reference> fa150aa3-3740-4c32-8a2c-e7f4d9420fbf
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
 - !<ScriptComponent/89f336af-a54a-4771-9123-43c3e0d36098>
   PrefabRemaps:
     []
@@ -11107,6 +11128,21 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<SceneObject/c77e39b2-1852-4fab-8e63-1878f543a8f5>
+  PrefabRemaps:
+    []
+  Name: Plane
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 80.000000, y: 80.000000, z: 80.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 89b38745-ef24-4bde-b0d4-c8840ed4e8ca
 - !<ScreenTransform/c79fd486-6a0a-47f5-9546-2725f694a92f>
   PrefabRemaps:
     []
