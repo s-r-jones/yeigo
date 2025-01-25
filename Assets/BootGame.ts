@@ -2,6 +2,7 @@ import { GroundPlacement } from "./GroundPlacement";
 import StateMachine from "SpectaclesInteractionKit/Utils/StateMachine";
 import { ScreenLogger } from "./ScreenLogger";
 import { PhoneController } from "./MotionController";
+import { HeadData } from "./HeadData";
 import { LSTween } from "./LSTween/LSTween";
 import {
   setTimeout,
@@ -32,6 +33,7 @@ export class NewScript extends BaseScriptComponent {
   @input instructionText: Text;
   @input groundPlacement: GroundPlacement;
   @input textContainer: SceneObject;
+  @input headData: HeadData;
   @allowUndefined
   @input
   audioPlayer: AudioComponent;
@@ -45,12 +47,16 @@ export class NewScript extends BaseScriptComponent {
   private groundPosition: vec3;
   private groundRotation: quat;
   private cameraStartPosition: vec3;
+  private trackHead: boolean = false;
+
   onAwake() {
     this.textContainer.enabled = false;
     this.instructionText.text = "";
     this.instructionText.enabled = false;
     this.stateMachine = new StateMachine("GameStateMachine");
+    this.walkerMarker.enabled = false;
 
+    // didnt really need to do this, oh well
     const config: StateMachineConfig = {
       stateMachine: this.stateMachine,
       textContainer: this.textContainer,
@@ -60,7 +66,7 @@ export class NewScript extends BaseScriptComponent {
     };
 
     this.setUpStateMachine(config);
-    this.stateMachine.enterState(States.GROUND_CALIBRATION);
+    this.stateMachine.enterState(States.PHONE_CALIBRATION);
   }
 
   private setUpStateMachine = (config: StateMachineConfig) => {
@@ -147,16 +153,15 @@ export class NewScript extends BaseScriptComponent {
           // get transform from motion controller
           this.handPosition = this.phoneController
             .getTransform()
-            .getWorldPosition();
+            .getWorldPosition()
+            .add(new vec3(0, 10, -5));
 
           this.walkerMarker.getTransform().setWorldPosition(this.handPosition);
-          this.walkerMarker
-            .getTransform()
-            .setWorldRotation(this.groundRotation);
+          // this.walkerMarker
+          //   .getTransform()
+          //   .setWorldRotation(this.groundRotation);
 
-          // spawn marker sceneobject oriented correctly. perfectly aligned on the z axis
-
-          ScreenLogger.getInstance().log("Hand Y " + this.handPosition.y);
+          this.walkerMarker.enabled = true;
 
           stateMachine.sendSignal(States.PHONE_IN_POCKET);
         }, 5000);
@@ -200,14 +205,16 @@ export class NewScript extends BaseScriptComponent {
     stateMachine.addState({
       name: States.FOLLOW,
       onEnter: () => {
+        this.cameraStartPosition = this.camObject
+          .getTransform()
+          .getWorldPosition();
+
+        this.headData.startTracking(this.cameraStartPosition);
         textContainer.enabled = true;
         this.instructionText.enabled = true;
         this.instructionText.text = "Grab the walker and follow the path";
 
         // record camera position
-        this.cameraStartPosition = this.camObject
-          .getTransform()
-          .getWorldPosition();
 
         // start head data collection
       },

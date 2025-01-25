@@ -29,6 +29,7 @@
     audioPlayer: false
     camObject: false
     groundPlacement: false
+    headData: false
     instructionText: false
     phoneController: false
     textContainer: false
@@ -43,6 +44,7 @@
       phoneController: !<MappingBased.MotionController> 00000000-0000-0000-0000-000000000000
       camObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       walkerMarker: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      headData: !<MappingBased.HeadData> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -51,6 +53,7 @@
     - // @input Component.Text instructionText
     - // @input GroundPlacement groundPlacement
     - // @input SceneObject textContainer
+    - // @input HeadData headData
     - // @input Component.AudioComponent audioPlayer
     - // @input MotionController phoneController
     - // @input SceneObject walkerMarker

@@ -2,16 +2,17 @@
   PackagePath: ""
   objects:
     - !<own> 36a87162-9925-4cd1-a53e-63c0ca590c4c
+    - !<own> 73cc2913-eba2-4d3f-a77d-0ea5de7412ba
     - !<own> 00000000-0000-0065-0000-000000000064
     - !<own> 0005641c-028d-459a-0000-000000014b4d
     - !<own> ff6c151e-214e-4216-8d76-8d4244e2a6e8
     - !<own> f68f0438-2abc-4fe4-afd7-77fb2758a16d
     - !<own> a603d3d6-a1dc-4424-9608-cf1a93eef604
-    - !<own> 78e0daff-ddba-4da7-adc0-c7851be30f2f
+    - !<own> 21ae70c6-c3b0-43b8-8bcd-5c1b695ed7ea
     - !<own> 08d442ab-24d0-4d49-b5e2-9617b8110ccd
-    - !<own> 73cc2913-eba2-4d3f-a77d-0ea5de7412ba
     - !<own> 4c01b712-e94f-4800-a917-4abc06e70d57
     - !<own> c77e39b2-1852-4fab-8e63-1878f543a8f5
+    - !<own> 78e0daff-ddba-4da7-adc0-c7851be30f2f
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       []
@@ -2118,6 +2119,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/21ae70c6-c3b0-43b8-8bcd-5c1b695ed7ea>
+  PrefabRemaps:
+    []
+  Name: HeadData
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 536ce221-1b3b-4e55-92ac-3d0fabe91195
 - !<RenderMeshVisual/21dd5d7f-9153-45b1-a73d-f18313b86363>
   PrefabRemaps:
     []
@@ -4552,6 +4568,22 @@
     CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<ScriptComponent/536ce221-1b3b-4e55-92ac-3d0fabe91195>
+  PrefabRemaps:
+    []
+  Name: HeadData
+  Enabled: true
+  ScriptAsset: !<reference> c10756ac-883d-468d-a4d2-7f791667f063
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      camObject: !<reference.SceneObject> 00000000-0000-0065-0000-000000000064
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/53c3b2b7-1cf2-479d-bcba-9527b9af5179>
   PrefabRemaps:
     []
@@ -7078,6 +7110,7 @@
       instructionText: !<reference.Text> a45d9874-f37c-41c9-b74b-fc5b8b804b30
       groundPlacement: !<MappingBased.GroundPlacement> acd895d5-70d4-4056-a5c5-3eae2fc4cfb4
       textContainer: !<reference.SceneObject> d387093b-00a9-4e77-827f-d97a6674158b
+      headData: !<MappingBased.HeadData> 536ce221-1b3b-4e55-92ac-3d0fabe91195
       audioPlayer: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
       phoneController: !<MappingBased.MotionController> 5a658daf-fa78-46b4-a1db-45e2ff566eb4
       walkerMarker: !<reference.SceneObject> c77e39b2-1852-4fab-8e63-1878f543a8f5
@@ -9654,7 +9687,7 @@
     - e6a93515-3480-4349-992b-58e2897320ce: 51b645cd-285a-4e66-afa3-219f4ff62448
     - ebd449c6-20b4-4830-b2fa-49a926ed63b0: 1310f45e-97d3-4c31-9463-82a46060a0b2
   Name: SurfaceDetection
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -11137,7 +11170,7 @@
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}
     rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    scale: {x: 80.000000, y: 80.000000, z: 80.000000}
+    scale: {x: 85.000000, y: 85.000000, z: 85.000000}
     hasSegmentScaleCompensation: false
   Children:
     []
@@ -13882,7 +13915,7 @@
     - fcedcd16-8d68-488c-92cf-8fc3fb8e929e: 8f271eef-bc6f-44ca-8498-4d71eb993dc0
     - fdd99efb-e57a-4acc-8115-665e08974fff: 5236bf74-2c01-4cfa-8ac3-71def1454ab5
   Name: SIK Examples
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}
