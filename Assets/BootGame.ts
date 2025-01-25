@@ -16,6 +16,7 @@ type StateMachineConfig = {
   groundPlacement: GroundPlacement;
   phoneController: PhoneController;
   audioPlayer?: AudioComponent;
+  calibrationUISteps: SceneObject[];
 };
 
 enum States {
@@ -67,6 +68,7 @@ export class NewScript extends BaseScriptComponent {
       instructionText: this.instructionText,
       groundPlacement: this.groundPlacement,
       phoneController: this.phoneController,
+      calibrationUISteps: this.calibrationUISteps,
     };
 
     this.setUpStateMachine(config);
@@ -80,6 +82,7 @@ export class NewScript extends BaseScriptComponent {
       instructionText,
       groundPlacement,
       phoneController,
+      calibrationUISteps,
     } = config;
     stateMachine.addState({
       name: States.GROUND_CALIBRATION,
@@ -115,7 +118,7 @@ export class NewScript extends BaseScriptComponent {
       name: States.PHONE_CALIBRATION,
       onEnter: (state) => {
         // enable to text telling user to begin phone calibration
-        this.calibrationUISteps[0].enabled = true;
+        calibrationUISteps[0].enabled = true;
 
         phoneController.setOnPhoneTrackingStateChange((val) => {
           // disable text
@@ -132,140 +135,144 @@ export class NewScript extends BaseScriptComponent {
           },
           onExecution() {
             // this.phoneController.clearOnPhoneTrackingStateChange();
-            this.calibrationUISteps[0].enabled = false;
+            calibrationUISteps[0].enabled = false;
           },
         },
       ],
     });
 
-    // stateMachine.addState({
-    //   name: States.SET_HAND_HEIGHT,
-    //   onEnter: (state) => {
-    //     // show text instructions telling user to hold their phone in their hand at their side
-    //     this.calibrationUISteps[1].enabled = true;
+    stateMachine.addState({
+      name: States.SET_HAND_HEIGHT,
+      onEnter: (state) => {
+        // show text instructions telling user to hold their phone in their hand at their side
+        calibrationUISteps[1].enabled = true;
+        // when phone is in position trigger timeout?
+        // Add a confirm button?
+        setTimeout(() => {
+          // get transform from motion controller
+          this.handPosition = this.phoneController
+            .getTransform()
+            .getWorldPosition()
+            .add(new vec3(0, 10, -5));
+          this.walkerMarker.getTransform().setWorldPosition(this.handPosition);
+          this.walkerMarker.enabled = true;
+          stateMachine.sendSignal(States.PHONE_IN_POCKET);
+        }, 15000);
+      },
+      transitions: [
+        {
+          nextStateName: States.PHONE_IN_POCKET,
+          checkOnSignal(signal) {
+            return signal === States.PHONE_IN_POCKET;
+          },
+          onExecution() {
+            calibrationUISteps[1].enabled = false;
+          },
+        },
+      ],
+    });
 
-    //     // when phone is in position trigger timeout?
-    //     // Add a confirm button?
+    stateMachine.addState({
+      name: States.PHONE_IN_POCKET,
+      onEnter: (state) => {
+        // show text instructions telling user to put their phone in their pocket
+        calibrationUISteps[2].enabled = true;
 
-    //     setTimeout(() => {
-    //       // get transform from motion controller
-    //       this.handPosition = this.phoneController
-    //         .getTransform()
-    //         .getWorldPosition()
-    //         .add(new vec3(0, 10, -5));
+        setTimeout(() => {
+          stateMachine.sendSignal(States.GET_WALKER);
+        }, 5000);
+      },
+      transitions: [
+        {
+          nextStateName: States.GET_WALKER,
+          checkOnSignal(signal) {
+            return signal === States.GET_WALKER;
+          },
+          onExecution() {
+            calibrationUISteps[2].enabled = false;
+          },
+        },
+      ],
+    });
 
-    //       this.walkerMarker.getTransform().setWorldPosition(this.handPosition);
+    stateMachine.addState({
+      name: States.GET_WALKER,
+      onEnter: () => {
+        calibrationUISteps[3].enabled = true;
+        setTimeout(() => {
+          stateMachine.sendSignal(States.STAND_STRAIGHT);
+        }, 5000);
+      },
+      transitions: [
+        {
+          nextStateName: States.STAND_STRAIGHT,
+          checkOnSignal(signal) {
+            return signal === States.STAND_STRAIGHT;
+          },
+          onExecution() {
+            calibrationUISteps[3].enabled = false;
+          },
+        },
+      ],
+    });
 
-    //       this.walkerMarker.enabled = true;
+    stateMachine.addState({
+      name: States.STAND_STRAIGHT,
+      onEnter: () => {
+        calibrationUISteps[4].enabled = true;
+        setTimeout(() => {
+          stateMachine.sendSignal(States.DONT_LEAN);
+        }, 5000);
+      },
+      transitions: [
+        {
+          nextStateName: States.DONT_LEAN,
+          checkOnSignal(signal) {
+            return signal === States.DONT_LEAN;
+          },
+          onExecution() {
+            calibrationUISteps[4].enabled = false;
+          },
+        },
+      ],
+    });
 
-    //       stateMachine.sendSignal(States.PHONE_IN_POCKET);
-    //     }, 15000);
-    //   },
-    //   transitions: [
-    //     {
-    //       nextStateName: States.PHONE_IN_POCKET,
-    //       checkOnSignal(signal) {
-    //         return signal === States.PHONE_IN_POCKET;
-    //       },
-    //       onExecution() {
-    //         this.calibrationUISteps[1].enabled = false;
-    //       },
-    //     },
-    //   ],
-    // });
+    stateMachine.addState({
+      name: States.DONT_LEAN,
+      onEnter: () => {
+        calibrationUISteps[5].enabled = true;
+        setTimeout(() => {
+          stateMachine.sendSignal(States.FOLLOW);
+        }, 5000);
+      },
+      transitions: [
+        {
+          nextStateName: States.FOLLOW,
+          checkOnSignal(signal) {
+            return signal === States.FOLLOW;
+          },
+          onExecution() {
+            calibrationUISteps[5].enabled = false;
+          },
+        },
+      ],
+    });
 
-    // stateMachine.addState({
-    //   name: States.PHONE_IN_POCKET,
-    //   onEnter: (state) => {
-    //     // show text instructions telling user to put their phone in their pocket
-    //     this.calibrationUISteps[2].enabled = true;
+    stateMachine.addState({
+      name: States.FOLLOW,
+      onEnter: () => {
+        // consider adding this to prev state transition onExecte
+        this.cameraStartPosition = this.camObject
+          .getTransform()
+          .getWorldPosition();
 
-    //     setTimeout(() => {
-    //       stateMachine.sendSignal(States.GET_WALKER);
-    //     }, 5000);
-    //   },
-    //   transitions: [
-    //     {
-    //       nextStateName: States.GET_WALKER,
-    //       checkOnSignal(signal) {
-    //         return signal === States.GET_WALKER;
-    //       },
-    //       onExecution() {
-    //         this.calibrationUISteps[2].enabled = false;
-    //       },
-    //     },
-    //   ],
-    // });
+        this.headData.startTracking(this.cameraStartPosition);
+        textContainer.enabled = true;
+        this.instructionText.enabled = true;
+        this.instructionText.text = "Grab the walker and follow the path";
 
-    // stateMachine.addState({
-    //   name: States.GET_WALKER,
-    //   onEnter: () => {
-    //     this.calibrationUISteps[3].enabled = true;
-    //   },
-    //   transitions: [
-    //     {
-    //       nextStateName: States.STAND_STRAIGHT,
-    //       checkOnSignal(signal) {
-    //         return signal === States.STAND_STRAIGHT;
-    //       },
-    //       onExecution() {
-    //         this.calibrationUISteps[3].enabled = false;
-    //       },
-    //     },
-    //   ],
-    // });
-
-    // stateMachine.addState({
-    //   name: States.STAND_STRAIGHT,
-    //   onEnter: () => {
-    //     this.calibrationUISteps[4].enabled = true;
-    //   },
-    //   transitions: [
-    //     {
-    //       nextStateName: States.DONT_LEAN,
-    //       checkOnSignal(signal) {
-    //         return signal === States.DONT_LEAN;
-    //       },
-    //       onExecution() {
-    //         this.calibrationUISteps[4].enabled = false;
-    //       },
-    //     },
-    //   ],
-    // });
-
-    // stateMachine.addState({
-    //   name: States.DONT_LEAN,
-    //   onEnter: () => {
-    //     this.calibrationUISteps[5].enabled = true;
-    //   },
-    //   transitions: [
-    //     {
-    //       nextStateName: States.FOLLOW,
-    //       checkOnSignal(signal) {
-    //         return signal === States.FOLLOW;
-    //       },
-    //       onExecution() {
-    //         this.calibrationUISteps[5].enabled = false;
-    //       },
-    //     },
-    //   ],
-    // });
-
-    // stateMachine.addState({
-    //   name: States.FOLLOW,
-    //   onEnter: () => {
-    //     // consider adding this to prev state transition onExecte
-    //     this.cameraStartPosition = this.camObject
-    //       .getTransform()
-    //       .getWorldPosition();
-
-    //     this.headData.startTracking(this.cameraStartPosition);
-    //     textContainer.enabled = true;
-    //     this.instructionText.enabled = true;
-    //     this.instructionText.text = "Grab the walker and follow the path";
-
-    //     // show ui 4 and then 5
-    //   },
-    // });
+        // show ui 4 and then 5
+      },
+    });
   };
 }

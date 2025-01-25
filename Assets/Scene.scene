@@ -10,7 +10,6 @@
     - !<own> f68f0438-2abc-4fe4-afd7-77fb2758a16d
     - !<own> a603d3d6-a1dc-4424-9608-cf1a93eef604
     - !<own> 08d442ab-24d0-4d49-b5e2-9617b8110ccd
-    - !<own> 4c01b712-e94f-4800-a917-4abc06e70d57
     - !<own> c77e39b2-1852-4fab-8e63-1878f543a8f5
     - !<own> 78e0daff-ddba-4da7-adc0-c7851be30f2f
     - !<own> 14ff0b19-b6f7-4b06-9d1b-66e67cfa6c10
@@ -39,8 +38,8 @@
     - !<own> d387093b-00a9-4e77-827f-d97a6674158b
     - !<own> 9fcd6938-593e-4475-b3b3-26178e599891
     - !<own> 96279b54-66d8-4f96-96c2-a51e6d951b65
-    - !<own> 0173c851-c567-4bdb-bfa1-c47f74aa6c8b
     - !<own> e4e3b427-0e8f-40ab-be80-08f00de04a8e
+    - !<own> 0173c851-c567-4bdb-bfa1-c47f74aa6c8b
     - !<own> eb8854c9-cc37-4c50-a3df-3eb73f5a10a5
     - !<own> acadefa1-47e9-4527-b776-93509f3e0e66
   Components:
@@ -227,7 +226,7 @@
 - !<SceneObject/0173c851-c567-4bdb-bfa1-c47f74aa6c8b>
   PrefabRemaps:
     []
-  Name: Step 2
+  Name: Step 3
   Enabled: false
   Layers: 1
   LocalTransform:
@@ -2056,55 +2055,6 @@
     - !<own> 7e117ed6-6fbe-4edb-941c-63a96b698e39
   Components:
     []
-- !<ScriptComponent/1bcc528e-3a45-4e3d-a7d5-228347155c12>
-  PrefabRemaps:
-    []
-  Name: ContainerFrame
-  Enabled: true
-  ScriptAsset: !<reference> 14c9f79e-3a55-43d4-bbf6-75c0d6d2e2a2
-  ScriptInputsDefault:
-    autoShowHide: true
-    border: true
-    constantPadding: true
-    allowTranslation: true
-    minimumSize: true
-    maximumSize: true
-    xAlways: true
-    yAlways: true
-    useSnapping: true
-    itemSnapping: true
-    worldSnapping: true
-    showCloseButton: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      autoShowHide: true
-      innerSize: !<Vec2> {x: 42.000000, y: 42.000000}
-      border: !<float> 4.000000
-      constantPadding: !<Vec2> {x: 0.000000, y: 0.000000}
-      allowScaling: false
-      autoScaleContent: false
-      isContentInteractable: true
-      allowTranslation: true
-      minimumSize: !<Vec2> {x: 10.000000, y: 10.000000}
-      maximumSize: !<Vec2> {x: 300.000000, y: 300.000000}
-      useBillboarding: true
-      xOnTranslate: true
-      xAlways: false
-      yOnTranslate: true
-      yAlways: false
-      useSnapping: false
-      itemSnapping: false
-      worldSnapping: false
-      showFollowButton: true
-      useFOVFollow: true
-      isFollowing: true
-      showCloseButton: true
-      _enableInteractionPlane: true
-  ScriptTypes:
-    "":
-      {}
 - !<ScriptComponent/1becfa95-9512-47d7-b458-5c095cf8aab4>
   PrefabRemaps:
     []
@@ -2542,7 +2492,7 @@
     - !<own> 64e0fa1d-f0ea-40b4-aa43-560e5d008762
     - !<own> 82b89559-d2a8-41b8-a1a8-8526213e7146
   Components:
-    - !<own> 54ddbf60-acff-4c40-8790-f8c8868ef45a
+    []
 - !<ScriptComponent/23bd31e8-9bc7-42d8-984e-51ec9382901d>
   PrefabRemaps:
     []
@@ -3746,7 +3696,7 @@
     - !<own> 02ec3611-e489-4b4a-b03c-76c5de3a8645
     - !<own> dabd303e-c967-4186-be3e-e43297ce9a53
   Components:
-    - !<own> 1bcc528e-3a45-4e3d-a7d5-228347155c12
+    []
 - !<ScreenTransform/36586694-5947-43fe-9596-906825de509d>
   PrefabRemaps:
     []
@@ -4130,7 +4080,7 @@
     - !<own> 18b3d8f2-d018-4e8d-860f-12d6f78d22d2
     - !<own> 72882c59-f548-4102-a2b6-32cb0eaaf606
   Components:
-    - !<own> c721e626-be04-4c3a-988d-f393ef136a30
+    []
 - !<RenderMeshVisual/40b553a5-b39e-4dc6-8c90-d82fc630df17>
   PrefabRemaps:
     []
@@ -4553,21 +4503,6 @@
   ScriptTypes:
     "":
       {}
-- !<SceneObject/4c01b712-e94f-4800-a917-4abc06e70d57>
-  PrefabRemaps:
-    []
-  Name: Box
-  Enabled: false
-  Layers: 1
-  LocalTransform:
-    position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    scale: {x: 5.000000, y: 5.000000, z: 15.000000}
-    hasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> bede9771-f0b1-4fc0-ad28-5a8d589925dd
 - !<SceneObject/4c4e9a6b-53dd-4a6b-8312-ea20dd40ff2c>
   PrefabRemaps:
     []
@@ -5088,55 +5023,6 @@
     - !<own> 632cca84-19fe-4886-8627-21a46a150dd2
   Components:
     - !<own> 8de4606b-d030-4494-93d0-78dcf4e89ee7
-- !<ScriptComponent/54ddbf60-acff-4c40-8790-f8c8868ef45a>
-  PrefabRemaps:
-    []
-  Name: ContainerFrame
-  Enabled: true
-  ScriptAsset: !<reference> 14c9f79e-3a55-43d4-bbf6-75c0d6d2e2a2
-  ScriptInputsDefault:
-    autoShowHide: true
-    border: true
-    constantPadding: true
-    allowTranslation: true
-    minimumSize: true
-    maximumSize: true
-    xAlways: true
-    yAlways: true
-    useSnapping: true
-    itemSnapping: true
-    worldSnapping: true
-    showCloseButton: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      autoShowHide: true
-      innerSize: !<Vec2> {x: 42.000000, y: 42.000000}
-      border: !<float> 4.000000
-      constantPadding: !<Vec2> {x: 0.000000, y: 0.000000}
-      allowScaling: false
-      autoScaleContent: false
-      isContentInteractable: true
-      allowTranslation: true
-      minimumSize: !<Vec2> {x: 10.000000, y: 10.000000}
-      maximumSize: !<Vec2> {x: 300.000000, y: 300.000000}
-      useBillboarding: true
-      xOnTranslate: true
-      xAlways: false
-      yOnTranslate: true
-      yAlways: false
-      useSnapping: false
-      itemSnapping: false
-      worldSnapping: false
-      showFollowButton: true
-      useFOVFollow: true
-      isFollowing: true
-      showCloseButton: true
-      _enableInteractionPlane: true
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/55313075-8410-4c83-b5fc-0b24ef2aa1dc>
   PrefabRemaps:
     []
@@ -7701,8 +7587,8 @@
       calibrationUISteps: !<reference.SceneObject[]>
         - !<reference> 9fcd6938-593e-4475-b3b3-26178e599891
         - !<reference> 96279b54-66d8-4f96-96c2-a51e6d951b65
-        - !<reference> 0173c851-c567-4bdb-bfa1-c47f74aa6c8b
         - !<reference> e4e3b427-0e8f-40ab-be80-08f00de04a8e
+        - !<reference> 0173c851-c567-4bdb-bfa1-c47f74aa6c8b
         - !<reference> eb8854c9-cc37-4c50-a3df-3eb73f5a10a5
         - !<reference> acadefa1-47e9-4527-b776-93509f3e0e66
       camObject: !<reference.SceneObject> 00000000-0000-0065-0000-000000000064
@@ -9113,7 +8999,7 @@
   PrefabRemaps:
     []
   Name: Box
-  Enabled: false
+  Enabled: true
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -11196,7 +11082,7 @@
     - !<own> f51baf92-b10b-4a26-aa65-1e215cf83e8a
     - !<own> ffdacf2b-33dd-443a-b6e5-b87d2257243a
   Components:
-    - !<own> b7a1405f-1a2b-4c84-9cc6-58aca24742fb
+    []
 - !<ScriptComponent/b04e02ae-2d83-4ddd-ad4b-d9d44e288ea4>
   PrefabRemaps:
     []
@@ -11517,55 +11403,6 @@
     - !<own> 8cbf86dc-678e-4587-9018-24c77fcb87ba
   Components:
     []
-- !<ScriptComponent/b7a1405f-1a2b-4c84-9cc6-58aca24742fb>
-  PrefabRemaps:
-    []
-  Name: ContainerFrame
-  Enabled: true
-  ScriptAsset: !<reference> 14c9f79e-3a55-43d4-bbf6-75c0d6d2e2a2
-  ScriptInputsDefault:
-    autoShowHide: true
-    border: true
-    constantPadding: true
-    allowTranslation: true
-    minimumSize: true
-    maximumSize: true
-    xAlways: true
-    yAlways: true
-    useSnapping: true
-    itemSnapping: true
-    worldSnapping: true
-    showCloseButton: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      autoShowHide: true
-      innerSize: !<Vec2> {x: 49.000000, y: 42.000000}
-      border: !<float> 4.000000
-      constantPadding: !<Vec2> {x: 0.000000, y: 0.000000}
-      allowScaling: false
-      autoScaleContent: false
-      isContentInteractable: true
-      allowTranslation: true
-      minimumSize: !<Vec2> {x: 10.000000, y: 10.000000}
-      maximumSize: !<Vec2> {x: 300.000000, y: 300.000000}
-      useBillboarding: true
-      xOnTranslate: true
-      xAlways: false
-      yOnTranslate: true
-      yAlways: false
-      useSnapping: false
-      itemSnapping: false
-      worldSnapping: false
-      showFollowButton: true
-      useFOVFollow: true
-      isFollowing: true
-      showCloseButton: true
-      _enableInteractionPlane: true
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/b7fba43c-452e-419c-b421-7f9ed959fc9d>
   PrefabRemaps:
     []
@@ -11813,26 +11650,6 @@
     - !<own> d180e208-2df8-4507-8437-213a1fbd5da6
   Components:
     []
-- !<RenderMeshVisual/bede9771-f0b1-4fc0-ad28-5a8d589925dd>
-  PrefabRemaps:
-    []
-  Name: Render Mesh Visual
-  Enabled: true
-  RenderOrder: 0
-  StretchMode: Stretch
-  VerticalAlignment: Center
-  HorizontalAlignment: Center
-  MeshShadowMode: None
-  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-  ShadowDensity: 1.000000
-  Materials:
-    - !<reference> e7aa3594-4971-4641-aac5-2e364a1886fb
-  Mesh: !<reference> c65cfd38-9aa8-4632-8b1b-515cf0ad829d
-  Skin: !<reference> 00000000-0000-0000-0000-000000000000
-  BlendShapesEnabled: true
-  BlendNormals: false
-  BlendShapes:
-    {}
 - !<Text/bf4229f1-c6a5-48d1-a38f-f04b89258a5f>
   PrefabRemaps:
     []
@@ -12224,55 +12041,6 @@
     CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
-- !<ScriptComponent/c721e626-be04-4c3a-988d-f393ef136a30>
-  PrefabRemaps:
-    []
-  Name: ContainerFrame
-  Enabled: true
-  ScriptAsset: !<reference> 14c9f79e-3a55-43d4-bbf6-75c0d6d2e2a2
-  ScriptInputsDefault:
-    autoShowHide: true
-    border: true
-    constantPadding: true
-    allowTranslation: true
-    minimumSize: true
-    maximumSize: true
-    xAlways: true
-    yAlways: true
-    useSnapping: true
-    itemSnapping: true
-    worldSnapping: true
-    showCloseButton: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      autoShowHide: true
-      innerSize: !<Vec2> {x: 42.000000, y: 42.000000}
-      border: !<float> 4.000000
-      constantPadding: !<Vec2> {x: 0.000000, y: 0.000000}
-      allowScaling: false
-      autoScaleContent: false
-      isContentInteractable: true
-      allowTranslation: true
-      minimumSize: !<Vec2> {x: 10.000000, y: 10.000000}
-      maximumSize: !<Vec2> {x: 300.000000, y: 300.000000}
-      useBillboarding: true
-      xOnTranslate: true
-      xAlways: false
-      yOnTranslate: true
-      yAlways: false
-      useSnapping: false
-      itemSnapping: false
-      worldSnapping: false
-      showFollowButton: true
-      useFOVFollow: true
-      isFollowing: true
-      showCloseButton: true
-      _enableInteractionPlane: true
-  ScriptTypes:
-    "":
-      {}
 - !<RenderMeshVisual/c73c04ca-7c3c-4e28-b9c0-d2c66644aef0>
   PrefabRemaps:
     []
@@ -12296,7 +12064,7 @@
 - !<SceneObject/c77e39b2-1852-4fab-8e63-1878f543a8f5>
   PrefabRemaps:
     []
-  Name: Plane
+  Name: walker marker
   Enabled: false
   Layers: 1
   LocalTransform:
@@ -13795,7 +13563,7 @@
 - !<SceneObject/e4e3b427-0e8f-40ab-be80-08f00de04a8e>
   PrefabRemaps:
     []
-  Name: Step 3
+  Name: Step 2
   Enabled: false
   Layers: 1
   LocalTransform:
