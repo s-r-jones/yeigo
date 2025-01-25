@@ -27,12 +27,18 @@
   MaxVisibility: Editable
   ScriptInputsHidden:
     camObject: false
+    distanceThreshold: false
+    warningUI: false
   ScriptTypesHidden:
     {}
   DefaultScriptInputs:
     - camObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      distanceThreshold: !<float> -5.000000
+      warningUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
     - // @input SceneObject camObject
+    - // @input SceneObject warningUI
+    - // @input float distanceThreshold = -5

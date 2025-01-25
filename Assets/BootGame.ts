@@ -67,6 +67,10 @@ export class NewScript extends BaseScriptComponent {
 
     this.setUpStateMachine(config);
     this.stateMachine.enterState(States.PHONE_CALIBRATION);
+
+    this.headData.setOutOfRangeCallback(() => {
+      // show UI
+    });
   }
 
   private setUpStateMachine = (config: StateMachineConfig) => {
