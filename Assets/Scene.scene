@@ -2,6 +2,7 @@
   PackagePath: ""
   objects:
     - !<own> 36a87162-9925-4cd1-a53e-63c0ca590c4c
+    - !<own> 5ca21e7c-d113-4432-81a3-da2caaa30ef3
     - !<own> 0005641c-028d-459a-0000-000000014b4d
     - !<own> 00000000-0000-0065-0000-000000000064
     - !<own> 73cc2913-eba2-4d3f-a77d-0ea5de7412ba
@@ -1662,7 +1663,7 @@
   Enabled: true
   Layers: 1
   LocalTransform:
-    position: {x: 0.000000, y: 0.000000, z: -70.000000}
+    position: {x: 0.000000, y: 0.000000, z: -80.000000}
     rotation: {x: -20.000011, y: 0.000000, z: 0.000000}
     scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     hasSegmentScaleCompensation: false
@@ -2660,7 +2661,7 @@
   PrefabRemaps:
     []
   Name: Background Audio Player
-  Enabled: false
+  Enabled: true
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -5488,6 +5489,21 @@
     - !<own> be49fb74-bd52-43d9-8ea6-b79a6965e36d
   Components:
     []
+- !<SceneObject/5ca21e7c-d113-4432-81a3-da2caaa30ef3>
+  PrefabRemaps:
+    []
+  Name: English Audio Files
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 735e694b-b856-44fc-8802-91a71f062ff3
 - !<SceneObject/5d1ebe34-4748-49b7-b6d3-7bad94ca7426>
   PrefabRemaps:
     []
@@ -7089,6 +7105,32 @@
   FlipY: false
   Pivot: {x: 0.000000, y: 0.000000}
   ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/735e694b-b856-44fc-8802-91a71f062ff3>
+  PrefabRemaps:
+    []
+  Name: AudioFiles
+  Enabled: true
+  ScriptAsset: !<reference> 645a1f06-495b-424e-8f65-5491b5bf60bf
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      audioTracks: !<reference.AudioTrackAsset[]>
+        - !<reference> 9ce62948-125e-4e80-95f1-6c9d950253d5
+        - !<reference> ac7e6316-d37e-4b56-bbfd-70bc8cd584c9
+        - !<reference> 1ca3c1bd-7e86-456e-b225-330b16c50d89
+        - !<reference> 4d7e94f9-5464-4dea-8b47-626b8d227e5a
+        - !<reference> 2d1ab70e-096a-4b9e-b0ce-2e2388b98d8f
+        - !<reference> 46149179-d3be-4ff2-ac34-14a8ed812ad4
+        - !<reference> f25159a9-d1a6-4f13-8472-329cc068e8fe
+        - !<reference> 7b2e66e5-f3d2-40b1-ac99-1421635cbd95
+        - !<reference> 9647256d-2310-48fc-bbc9-8864b5ee9dbf
+        - !<reference> d808a533-80e2-4540-9a27-ee484907fad0
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/736562f6-84cf-42fb-82b8-335291e60254>
   PrefabRemaps:
     []
@@ -7188,9 +7230,9 @@
     []
   Name: Audio
   Enabled: true
-  AudioTrack: !<reference> 00000000-0000-0000-0000-000000000000
-  EnableAutoplayLoop: false
-  Volume: 1.000000
+  AudioTrack: !<reference> 3c3cbef0-0de7-4dab-b8f3-16887bf9930e
+  EnableAutoplayLoop: true
+  Volume: 0.100000
   EnableMixToSnap: false
   RecordVolume: 1.000000
   EnableSpatialAudio: false
@@ -7579,7 +7621,7 @@
   Enabled: true
   ScriptAsset: !<reference> 6d57a8d7-d56a-49f6-b8e6-921846958264
   ScriptInputsDefault:
-    audioPlayer: true
+    {}
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -7596,7 +7638,8 @@
       groundPlacement: !<MappingBased.GroundPlacement> acd895d5-70d4-4056-a5c5-3eae2fc4cfb4
       textContainer: !<reference.SceneObject> d387093b-00a9-4e77-827f-d97a6674158b
       headData: !<MappingBased.HeadData> 536ce221-1b3b-4e55-92ac-3d0fabe91195
-      audioPlayer: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      englishAudioFiles: !<MappingBased.AudioFiles> 735e694b-b856-44fc-8802-91a71f062ff3
+      audioPlayer: !<reference.AudioComponent> 9ef8f4b3-a1f7-41b0-ac03-4abcb5bf4377
       phoneController: !<MappingBased.MotionController> 5a658daf-fa78-46b4-a1db-45e2ff566eb4
       walkerMarker: !<reference.SceneObject> c77e39b2-1852-4fab-8e63-1878f543a8f5
   ScriptTypes:
@@ -8999,7 +9042,7 @@
   PrefabRemaps:
     []
   Name: Box
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -12485,7 +12528,7 @@
   PrefabRemaps:
     []
   Name: Instruction Audio Player
-  Enabled: false
+  Enabled: true
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}

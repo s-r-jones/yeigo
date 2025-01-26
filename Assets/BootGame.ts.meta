@@ -29,6 +29,7 @@
     audioPlayer: false
     calibrationUISteps: false
     camObject: false
+    englishAudioFiles: false
     groundPlacement: false
     headData: false
     instructionText: false
@@ -48,6 +49,7 @@
       headData: !<MappingBased.HeadData> 00000000-0000-0000-0000-000000000000
       calibrationUISteps: !<reference.SceneObject[]>
         []
+      englishAudioFiles: !<MappingBased.AudioFiles> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -58,6 +60,7 @@
     - // @input GroundPlacement groundPlacement
     - // @input SceneObject textContainer
     - // @input HeadData headData
+    - // @input AudioFiles englishAudioFiles
     - // @input Component.AudioComponent audioPlayer
     - // @input MotionController phoneController
     - // @input SceneObject walkerMarker

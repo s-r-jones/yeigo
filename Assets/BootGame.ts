@@ -8,6 +8,7 @@ import {
   setTimeout,
   clearTimeout,
 } from "./SpectaclesInteractionKit/Utils/debounce";
+import { AudioFiles } from "./AudioFiles";
 
 type StateMachineConfig = {
   stateMachine: StateMachine;
@@ -15,8 +16,9 @@ type StateMachineConfig = {
   instructionText: Text;
   groundPlacement: GroundPlacement;
   phoneController: PhoneController;
-  audioPlayer?: AudioComponent;
+  audioPlayer: AudioComponent;
   calibrationUISteps: SceneObject[];
+  englishAudioFiles: AudioFiles;
 };
 
 enum States {
@@ -39,7 +41,9 @@ export class NewScript extends BaseScriptComponent {
   @input groundPlacement: GroundPlacement;
   @input textContainer: SceneObject;
   @input headData: HeadData;
-  @allowUndefined
+
+  @input englishAudioFiles: AudioFiles;
+
   @input
   audioPlayer: AudioComponent;
 
@@ -69,6 +73,8 @@ export class NewScript extends BaseScriptComponent {
       groundPlacement: this.groundPlacement,
       phoneController: this.phoneController,
       calibrationUISteps: this.calibrationUISteps,
+      englishAudioFiles: this.englishAudioFiles,
+      audioPlayer: this.audioPlayer,
     };
 
     this.setUpStateMachine(config);
@@ -83,6 +89,8 @@ export class NewScript extends BaseScriptComponent {
       groundPlacement,
       phoneController,
       calibrationUISteps,
+      audioPlayer,
+      englishAudioFiles,
     } = config;
     stateMachine.addState({
       name: States.GROUND_CALIBRATION,
@@ -118,6 +126,14 @@ export class NewScript extends BaseScriptComponent {
       name: States.PHONE_CALIBRATION,
       onEnter: (state) => {
         // enable to text telling user to begin phone calibration
+        audioPlayer.audioTrack = englishAudioFiles.getTracks()[0];
+        audioPlayer.setOnFinish(() => {
+          audioPlayer.audioTrack = englishAudioFiles.getTracks()[1];
+          audioPlayer.play(1);
+          audioPlayer.setOnFinish(() => null);
+        });
+        audioPlayer.play(1);
+
         calibrationUISteps[0].enabled = true;
 
         phoneController.setOnPhoneTrackingStateChange((val) => {
@@ -134,8 +150,9 @@ export class NewScript extends BaseScriptComponent {
             return signal === States.SET_HAND_HEIGHT;
           },
           onExecution() {
-            // this.phoneController.clearOnPhoneTrackingStateChange();
+            //phoneController.clearOnPhoneTrackingStateChange();
             calibrationUISteps[0].enabled = false;
+            audioPlayer.pause();
           },
         },
       ],
@@ -146,18 +163,26 @@ export class NewScript extends BaseScriptComponent {
       onEnter: (state) => {
         // show text instructions telling user to hold their phone in their hand at their side
         calibrationUISteps[1].enabled = true;
+        audioPlayer.audioTrack = englishAudioFiles.getTracks()[2];
+        audioPlayer.setOnFinish(() => {
+          setTimeout(() => {
+            // get transform from motion controller
+            this.handPosition = this.phoneController
+              .getTransform()
+              .getWorldPosition()
+              .add(new vec3(0, 10, -5));
+            this.walkerMarker
+              .getTransform()
+              .setWorldPosition(this.handPosition);
+            this.walkerMarker.enabled = true;
+            stateMachine.sendSignal(States.PHONE_IN_POCKET);
+          }, 5000);
+
+          audioPlayer.setOnFinish(() => null);
+        });
+        audioPlayer.play(1);
         // when phone is in position trigger timeout?
         // Add a confirm button?
-        setTimeout(() => {
-          // get transform from motion controller
-          this.handPosition = this.phoneController
-            .getTransform()
-            .getWorldPosition()
-            .add(new vec3(0, 10, -5));
-          this.walkerMarker.getTransform().setWorldPosition(this.handPosition);
-          this.walkerMarker.enabled = true;
-          stateMachine.sendSignal(States.PHONE_IN_POCKET);
-        }, 15000);
       },
       transitions: [
         {
@@ -177,10 +202,15 @@ export class NewScript extends BaseScriptComponent {
       onEnter: (state) => {
         // show text instructions telling user to put their phone in their pocket
         calibrationUISteps[2].enabled = true;
+        audioPlayer.audioTrack = englishAudioFiles.getTracks()[3];
 
-        setTimeout(() => {
-          stateMachine.sendSignal(States.GET_WALKER);
-        }, 5000);
+        audioPlayer.setOnFinish(() => {
+          setTimeout(() => {
+            stateMachine.sendSignal(States.GET_WALKER);
+          }, 4000);
+          audioPlayer.setOnFinish(() => null);
+        });
+        audioPlayer.play(1);
       },
       transitions: [
         {
@@ -199,9 +229,24 @@ export class NewScript extends BaseScriptComponent {
       name: States.GET_WALKER,
       onEnter: () => {
         calibrationUISteps[3].enabled = true;
-        setTimeout(() => {
-          stateMachine.sendSignal(States.STAND_STRAIGHT);
-        }, 5000);
+        // play 4, 5
+        audioPlayer.audioTrack = englishAudioFiles.getTracks()[4];
+        audioPlayer.setOnFinish(() => {
+          audioPlayer.audioTrack = englishAudioFiles.getTracks()[5];
+          audioPlayer.play(1);
+          audioPlayer.setOnFinish(() => null);
+          setTimeout(() => {
+            // play 6
+
+            audioPlayer.audioTrack = englishAudioFiles.getTracks()[6];
+            audioPlayer.setOnFinish(() => {
+              stateMachine.sendSignal(States.STAND_STRAIGHT);
+              audioPlayer.setOnFinish(() => null);
+            });
+            audioPlayer.play(1);
+          }, 4000);
+        });
+        audioPlayer.play(1);
       },
       transitions: [
         {
@@ -221,29 +266,12 @@ export class NewScript extends BaseScriptComponent {
       onEnter: () => {
         calibrationUISteps[4].enabled = true;
         setTimeout(() => {
-          stateMachine.sendSignal(States.DONT_LEAN);
-        }, 5000);
-      },
-      transitions: [
-        {
-          nextStateName: States.DONT_LEAN,
-          checkOnSignal(signal) {
-            return signal === States.DONT_LEAN;
-          },
-          onExecution() {
-            calibrationUISteps[4].enabled = false;
-          },
-        },
-      ],
-    });
-
-    stateMachine.addState({
-      name: States.DONT_LEAN,
-      onEnter: () => {
-        calibrationUISteps[5].enabled = true;
-        setTimeout(() => {
-          stateMachine.sendSignal(States.FOLLOW);
-        }, 5000);
+          calibrationUISteps[4].enabled = false;
+          calibrationUISteps[5].enabled = true;
+          setTimeout(() => {
+            stateMachine.sendSignal(States.FOLLOW);
+          }, 3000);
+        }, 3000);
       },
       transitions: [
         {
@@ -252,6 +280,7 @@ export class NewScript extends BaseScriptComponent {
             return signal === States.FOLLOW;
           },
           onExecution() {
+            calibrationUISteps[4].enabled = false;
             calibrationUISteps[5].enabled = false;
           },
         },
@@ -267,11 +296,18 @@ export class NewScript extends BaseScriptComponent {
           .getWorldPosition();
 
         this.headData.startTracking(this.cameraStartPosition);
-        textContainer.enabled = true;
-        this.instructionText.enabled = true;
-        this.instructionText.text = "Grab the walker and follow the path";
-
-        // show ui 4 and then 5
+        // play tracks7 8 9 back to back
+        audioPlayer.audioTrack = englishAudioFiles.getTracks()[7];
+        audioPlayer.setOnFinish(() => {
+          audioPlayer.audioTrack = englishAudioFiles.getTracks()[8];
+          audioPlayer.play(1);
+          audioPlayer.setOnFinish(() => {
+            audioPlayer.audioTrack = englishAudioFiles.getTracks()[9];
+            audioPlayer.play(1);
+            audioPlayer.setOnFinish(() => null);
+          });
+        });
+        audioPlayer.play(1);
       },
     });
   };
