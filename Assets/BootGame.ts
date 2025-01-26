@@ -4,6 +4,8 @@ import { ScreenLogger } from "./ScreenLogger";
 import { PhoneController } from "./MotionController";
 import { HeadData } from "./HeadData";
 import { LSTween } from "./LSTween/LSTween";
+import { Easing } from "./LSTween/TweenJS/Easing";
+
 import {
   setTimeout,
   clearTimeout,
@@ -20,6 +22,7 @@ type StateMachineConfig = {
   calibrationUISteps: SceneObject[];
   englishAudioFiles: AudioFiles;
   bubble: SceneObject;
+  signs: SceneObject;
 };
 
 enum States {
@@ -43,6 +46,7 @@ export class NewScript extends BaseScriptComponent {
   @input textContainer: SceneObject;
   @input headData: HeadData;
   @input bubble: SceneObject;
+  @input signs: SceneObject;
 
   @input englishAudioFiles: AudioFiles;
 
@@ -60,13 +64,16 @@ export class NewScript extends BaseScriptComponent {
   private cameraStartPosition: vec3;
   private trackHead: boolean = false;
 
+  private signObjects: SceneObject[] = [];
+
   onAwake() {
     this.textContainer.enabled = false;
     this.instructionText.text = "";
     this.instructionText.enabled = false;
     this.stateMachine = new StateMachine("GameStateMachine");
     this.walkerMarker.enabled = false;
-
+    const signParent = this.signs.getChild(0);
+    this.signObjects = signParent.children;
     // didnt really need to do this, oh well
     const config: StateMachineConfig = {
       stateMachine: this.stateMachine,
@@ -78,6 +85,7 @@ export class NewScript extends BaseScriptComponent {
       englishAudioFiles: this.englishAudioFiles,
       audioPlayer: this.audioPlayer,
       bubble: this.bubble,
+      signs: this.signs,
     };
 
     this.setUpStateMachine(config);
@@ -95,6 +103,7 @@ export class NewScript extends BaseScriptComponent {
       audioPlayer,
       englishAudioFiles,
       bubble,
+      signs,
     } = config;
     stateMachine.addState({
       name: States.GROUND_CALIBRATION,
@@ -110,7 +119,7 @@ export class NewScript extends BaseScriptComponent {
           this.groundPosition = pos;
           this.groundRotation = rot;
 
-          ScreenLogger.getInstance().log("Ground Y " + this.groundPosition.y);
+          //ScreenLogger.getInstance().log("Ground Y " + this.groundPosition.y);
 
           stateMachine.sendSignal(States.PHONE_CALIBRATION);
         });
@@ -142,7 +151,7 @@ export class NewScript extends BaseScriptComponent {
 
         phoneController.setOnPhoneTrackingStateChange((val) => {
           // disable text
-          ScreenLogger.getInstance().log("Phone Tracking State Change " + val);
+          //ScreenLogger.getInstance().log("Phone Tracking State Change " + val);
 
           stateMachine.sendSignal(States.SET_HAND_HEIGHT);
         });
@@ -180,7 +189,7 @@ export class NewScript extends BaseScriptComponent {
               .setWorldPosition(this.handPosition);
             this.walkerMarker.enabled = true;
             stateMachine.sendSignal(States.PHONE_IN_POCKET);
-          }, 5000);
+          }, 4000);
 
           audioPlayer.setOnFinish(() => null);
         });
@@ -212,7 +221,7 @@ export class NewScript extends BaseScriptComponent {
         audioPlayer.setOnFinish(() => {
           setTimeout(() => {
             stateMachine.sendSignal(States.GET_WALKER);
-          }, 3500);
+          }, 3000);
           audioPlayer.setOnFinish(() => null);
         });
         audioPlayer.play(1);
@@ -324,7 +333,54 @@ export class NewScript extends BaseScriptComponent {
               this.camObject.getTransform().forward.add(new vec3(0, 0, -460))
             )
         );
+
+        signs.getTransform().setWorldPosition(
+          this.camObject
+            .getTransform()
+            .getWorldPosition()
+            .add(
+              this.camObject.getTransform().forward.add(new vec3(0, 0, -200))
+            )
+        );
+
+        for (let i = 0; i < this.signObjects.length; i++) {
+          LSTween.scaleFromToLocal(
+            this.signObjects[i].getTransform(),
+            new vec3(0, 0, 0),
+            new vec3(100, 100, 100),
+            1000
+          )
+            .easing(Easing.Bounce.InOut)
+            .delay(i === 0 ? 250 : i === 1 ? 500 : 1000)
+            .onStart(() => {
+              this.signObjects[i].enabled = true;
+            })
+            .start();
+        }
+
+        function playAudio(track: number, onFinish: () => void) {
+          audioPlayer.audioTrack = englishAudioFiles.getTracks()[track];
+
+          audioPlayer.setOnFinish(() => {
+            setTimeout(() => {
+              onFinish();
+            }, 2000);
+          });
+          audioPlayer.play(1);
+        }
+
+        playAudio(10, () => {
+          playAudio(11, () => {
+            playAudio(9, () => {});
+          });
+        });
+
+        //
+
+        // play 9 10 11 with 2 second delay between each
+
         bubble.enabled = true;
+        //signs.enabled = true;
         audioPlayer.play(1);
       },
     });
