@@ -35,6 +35,7 @@
     headData: false
     instructionText: false
     phoneController: false
+    signs: false
     textContainer: false
     walkerMarker: false
   ScriptTypesHidden:
@@ -52,6 +53,8 @@
         []
       englishAudioFiles: !<MappingBased.AudioFiles> 00000000-0000-0000-0000-000000000000
       bubble: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      signs: !<reference.SceneObject[]>
+        []
   ScriptTypes:
     -
       {}
@@ -63,6 +66,7 @@
     - // @input SceneObject textContainer
     - // @input HeadData headData
     - // @input SceneObject bubble
+    - // @input SceneObject signs
     - // @input AudioFiles englishAudioFiles
     - // @input Component.AudioComponent audioPlayer
     - // @input MotionController phoneController

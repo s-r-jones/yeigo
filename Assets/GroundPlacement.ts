@@ -35,6 +35,6 @@ export class GroundPlacement extends BaseScriptComponent {
     this.objectVisuals.enabled = true;
     this.cubeTrans.setWorldPosition(pos);
     this.cubeTrans.setWorldRotation(rot);
-    ScreenLogger.getInstance().log("Surface detected");
+    //Instance().log("Surface detected");
   }
 }

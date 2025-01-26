@@ -40,7 +40,7 @@ export class PhoneController extends BaseScriptComponent {
   }
 
   setOnPhoneTrackingStateChange(callback: (val?: boolean) => void) {
-    ScreenLogger.getInstance().log("Setting onPhoneTrackingStateChange");
+    // ScreenLogger.getInstance().log("Setting onPhoneTrackingStateChange");
     this.onPhoneTrackingStarted = callback;
   }
 
