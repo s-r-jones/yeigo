@@ -158,10 +158,13 @@ export class NewScript extends BaseScriptComponent {
     stateMachine.addState({
       name: States.PHONE_CALIBRATION,
       onEnter: (state) => {
+        const audioFiles = this.isEnglish
+          ? this.englishAudioFiles
+          : this.dineAudioFiles;
         // enable to text telling user to begin phone calibration
-        audioPlayer.audioTrack = englishAudioFiles.getTracks()[0];
+        audioPlayer.audioTrack = audioFiles.getTracks()[0];
         audioPlayer.setOnFinish(() => {
-          audioPlayer.audioTrack = englishAudioFiles.getTracks()[1];
+          audioPlayer.audioTrack = audioFiles.getTracks()[1];
           audioPlayer.play(1);
           audioPlayer.setOnFinish(() => null);
         });
@@ -194,9 +197,12 @@ export class NewScript extends BaseScriptComponent {
     stateMachine.addState({
       name: States.SET_HAND_HEIGHT,
       onEnter: (state) => {
+        const audioFiles = this.isEnglish
+          ? this.englishAudioFiles
+          : this.dineAudioFiles;
         // show text instructions telling user to hold their phone in their hand at their side
         calibrationUISteps[1].enabled = true;
-        audioPlayer.audioTrack = englishAudioFiles.getTracks()[2];
+        audioPlayer.audioTrack = audioFiles.getTracks()[2];
         audioPlayer.setOnFinish(() => {
           setTimeout(() => {
             // get transform from motion controller
@@ -234,9 +240,12 @@ export class NewScript extends BaseScriptComponent {
     stateMachine.addState({
       name: States.PHONE_IN_POCKET,
       onEnter: (state) => {
+        const audioFiles = this.isEnglish
+          ? this.englishAudioFiles
+          : this.dineAudioFiles;
         // show text instructions telling user to put their phone in their pocket
         calibrationUISteps[2].enabled = true;
-        audioPlayer.audioTrack = englishAudioFiles.getTracks()[3];
+        audioPlayer.audioTrack = audioFiles.getTracks()[3];
 
         audioPlayer.setOnFinish(() => {
           setTimeout(() => {
@@ -263,17 +272,20 @@ export class NewScript extends BaseScriptComponent {
     stateMachine.addState({
       name: States.GET_WALKER,
       onEnter: () => {
+        const audioFiles = this.isEnglish
+          ? this.englishAudioFiles
+          : this.dineAudioFiles;
         calibrationUISteps[3].enabled = true;
         // play 4, 5
-        audioPlayer.audioTrack = englishAudioFiles.getTracks()[4];
+        audioPlayer.audioTrack = audioFiles.getTracks()[4];
         audioPlayer.setOnFinish(() => {
-          audioPlayer.audioTrack = englishAudioFiles.getTracks()[5];
+          audioPlayer.audioTrack = audioFiles.getTracks()[5];
           audioPlayer.play(1);
           audioPlayer.setOnFinish(() => null);
           setTimeout(() => {
             // play 6
 
-            audioPlayer.audioTrack = englishAudioFiles.getTracks()[6];
+            audioPlayer.audioTrack = audioFiles.getTracks()[6];
             audioPlayer.setOnFinish(() => {
               stateMachine.sendSignal(States.STAND_STRAIGHT);
               audioPlayer.setOnFinish(() => null);
@@ -300,8 +312,11 @@ export class NewScript extends BaseScriptComponent {
     stateMachine.addState({
       name: States.STAND_STRAIGHT,
       onEnter: () => {
+        const audioFiles = this.isEnglish
+          ? this.englishAudioFiles
+          : this.dineAudioFiles;
         calibrationUISteps[4].enabled = true;
-        audioPlayer.audioTrack = englishAudioFiles.getTracks()[8];
+        audioPlayer.audioTrack = audioFiles.getTracks()[8];
         audioPlayer.play(1);
         setTimeout(() => {
           calibrationUISteps[4].enabled = false;
@@ -329,6 +344,9 @@ export class NewScript extends BaseScriptComponent {
     stateMachine.addState({
       name: States.FOLLOW,
       onEnter: () => {
+        const audioFiles = this.isEnglish
+          ? this.englishAudioFiles
+          : this.dineAudioFiles;
         // consider adding this to prev state transition onExecte
         this.cameraStartPosition = this.camObject
           .getTransform()
@@ -336,9 +354,9 @@ export class NewScript extends BaseScriptComponent {
 
         this.headData.startTracking(this.cameraStartPosition);
         // play tracks7 8 9 back to back
-        audioPlayer.audioTrack = englishAudioFiles.getTracks()[7];
+        audioPlayer.audioTrack = audioFiles.getTracks()[7];
         audioPlayer.setOnFinish(() => {
-          audioPlayer.audioTrack = englishAudioFiles.getTracks()[9];
+          audioPlayer.audioTrack = audioFiles.getTracks()[9];
           audioPlayer.play(1);
           audioPlayer.setOnFinish(() => {
             audioPlayer.setOnFinish(() => null);
@@ -389,11 +407,19 @@ export class NewScript extends BaseScriptComponent {
           audioPlayer.play(1);
         }
 
-        playAudio(10, () => {
-          playAudio(11, () => {
-            playAudio(9, () => {});
+        if (this.isEnglish) {
+          playAudio(10, () => {
+            playAudio(11, () => {
+              playAudio(9, () => {});
+            });
           });
-        });
+        } else {
+          playAudio(10, () => {
+            playAudio(11, () => {
+              playAudio(9, () => {});
+            });
+          });
+        }
 
         //
 
