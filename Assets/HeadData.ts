@@ -5,6 +5,9 @@ import { lerp } from "./SpectaclesInteractionKit/Utils/mathUtils";
 export class HeadData extends BaseScriptComponent {
   @input camObject: SceneObject;
   @input warningUI: SceneObject;
+  @input audioPlayer: AudioComponent;
+  @input audioTracks: AudioTrackAsset[];
+
   @input distanceThreshold: number = -7;
 
   private headStartPosition: vec3 | null = null;
@@ -14,6 +17,7 @@ export class HeadData extends BaseScriptComponent {
   private frameSkip: number = 30;
   private showingWarningUI: boolean = false;
   public headDistanceFromStart: number = 0;
+  private isFeedbackAudioPlaying: boolean = false;
 
   private outOfRangeCallback: () => void | null = null;
 
@@ -44,7 +48,6 @@ export class HeadData extends BaseScriptComponent {
   }
 
   startTracking(pos: vec3) {
-    ScreenLogger.getInstance().log("Starting head tracking");
     this.headStartPosition = pos;
     this.updateEvent = this.createEvent("LateUpdateEvent");
     this.updateEvent.bind(this.onLateUpdate.bind(this));
@@ -83,6 +86,17 @@ export class HeadData extends BaseScriptComponent {
         0.5
       );
       this.warningUI.getTransform().setWorldPosition(pos);
+      //if (this.audioPlayer.isPlaying()) this.audioPlayer.pause();
+
+      if (!this.isFeedbackAudioPlaying) {
+        this.audioPlayer.audioTrack = this.audioTracks[1];
+        this.isFeedbackAudioPlaying = true;
+        this.audioPlayer.setOnFinish(() => {
+          this.isFeedbackAudioPlaying = false;
+          this.audioPlayer.setOnFinish(() => null);
+        });
+        this.audioPlayer.play(1);
+      }
       // rotate warning UI to face camera
 
       // slerp warning rotation to camera rotation
@@ -92,6 +106,8 @@ export class HeadData extends BaseScriptComponent {
         0.5
       );
       this.warningUI.getTransform().setWorldRotation(rot);
+    } else if (!this.showingWarningUI) {
+      // play audio track 10
     }
 
     // place warning UI several cm's in front of camera

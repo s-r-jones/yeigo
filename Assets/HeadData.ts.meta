@@ -26,6 +26,8 @@
   CurrentVisibility: Editable
   MaxVisibility: Editable
   ScriptInputsHidden:
+    audioPlayer: false
+    audioTracks: false
     camObject: false
     distanceThreshold: false
     warningUI: false
@@ -35,10 +37,15 @@
     - camObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       distanceThreshold: !<float> -5.000000
       warningUI: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      audioPlayer: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      audioTracks: !<reference.AudioTrackAsset[]>
+        []
   ScriptTypes:
     -
       {}
   InputLines:
     - // @input SceneObject camObject
     - // @input SceneObject warningUI
+    - // @input Component.AudioComponent audioPlayer
+    - "// @input Asset.AudioTrackAsset[] audioTracks"
     - // @input float distanceThreshold = -7

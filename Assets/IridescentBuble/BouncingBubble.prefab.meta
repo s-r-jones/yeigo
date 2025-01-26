@@ -1,0 +1,101 @@
+- !<AssetImportMetadata/391bbff8-6cb7-4bf3-a496-3a3d5c384bae>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 41d4ecdd-fbf5-4dde-b4dc-f75b276a836a
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 41d4ecdd-fbf5-4dde-b4dc-f75b276a836a
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> f6c58616-5a77-47cd-8921-7fbc2c4a1e2b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings/8ffe58b3-d0ba-4ef2-90b4-ecc1ca364936>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ObjectPrefab/05114386-416b-4f7a-b9ec-c390a9ffec54>
+  PackagePath: ""
+  objects:
+    - !<own> 723d8269-43a6-431a-bf1b-20bf13ca5415
+  LazyLoading: false
+  RetainAssets: true
+- !<SceneObject/723d8269-43a6-431a-bf1b-20bf13ca5415>
+  PrefabRemaps:
+    []
+  Name: BouncingBubble
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> a36c5fac-98ed-43c0-808f-ab160fddaf8a
+  Components:
+    - !<own> c7a59c88-cd68-42f3-8af0-34c2ca86d20e
+- !<RenderMeshVisual/892de013-859c-45e3-ac7b-ed8f57d5e1bc>
+  PrefabRemaps:
+    []
+  Name: component_0
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 6ed28038-90d3-409e-9797-6c1cdd368e26
+    - !<reference> ae613aac-1458-4e59-bbe4-c722ebe15a59
+  Mesh: !<reference> 686a3de7-2fb0-41a8-85e3-3530b1068b77
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/a36c5fac-98ed-43c0-808f-ab160fddaf8a>
+  PrefabRemaps:
+    []
+  Name: Sphere
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 178.335205, z: 0.000000}
+    rotation: {x: -90.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 13.356531, y: 13.356531, z: 13.356531}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 892de013-859c-45e3-ac7b-ed8f57d5e1bc
+- !<AnimationPlayer/c7a59c88-cd68-42f3-8af0-34c2ca86d20e>
+  PrefabRemaps:
+    []
+  Name: component_1
+  Enabled: true
+  Autoplay: true
+  ClipRangeType: Frames
+  AnimationClips:
+    - !<AnimationClip>
+      AnimationAsset: !<reference> dd755d9a-ab89-4100-adc1-c913ed864998
+      Name: Sphere|SphereAction
+      Weight: 1.000000
+      PlaybackSpeed: 1.000000
+      Begin: 0.000000
+      End: 366.250000
+      Reversed: false
+      Disabled: false
+      BlendMode: Default
+      ScaleMode: Multiply
+      PlaybackMode: Loop
+- !<ObjectPrefabAssetData/f6c58616-5a77-47cd-8921-7fbc2c4a1e2b>
+  SourceRemaps:
+    - 41d4ecdd-fbf5-4dde-b4dc-f75b276a836a: 05114386-416b-4f7a-b9ec-c390a9ffec54
+    - 4543915b-faee-4561-8aae-8a8a8ffe1ab7: 892de013-859c-45e3-ac7b-ed8f57d5e1bc
+    - 50f700d9-0519-4eb1-bfcd-4841976e0284: a36c5fac-98ed-43c0-808f-ab160fddaf8a
+    - 923a9d8d-fc7f-4ef6-9ca3-2a214e1d9c0a: 723d8269-43a6-431a-bf1b-20bf13ca5415
+    - f7c90db8-8fc0-4d25-83f4-452a0a570ee0: c7a59c88-cd68-42f3-8af0-34c2ca86d20e
+  SourceState: !<own> 05114386-416b-4f7a-b9ec-c390a9ffec54

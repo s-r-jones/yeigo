@@ -1,0 +1,77 @@
+- !<ObjectPrefab/41d4ecdd-fbf5-4dde-b4dc-f75b276a836a>
+  PackagePath: ""
+  objects:
+    - !<own> 923a9d8d-fc7f-4ef6-9ca3-2a214e1d9c0a
+  LazyLoading: false
+  RetainAssets: true
+- !<RenderMeshVisual/4543915b-faee-4561-8aae-8a8a8ffe1ab7>
+  PrefabRemaps:
+    []
+  Name: component_0
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 6ed28038-90d3-409e-9797-6c1cdd368e26
+    - !<reference> ae613aac-1458-4e59-bbe4-c722ebe15a59
+  Mesh: !<reference> 686a3de7-2fb0-41a8-85e3-3530b1068b77
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/50f700d9-0519-4eb1-bfcd-4841976e0284>
+  PrefabRemaps:
+    []
+  Name: Sphere
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 178.335205, z: 0.000000}
+    rotation: {x: -90.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 13.356531, y: 13.356531, z: 13.356531}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 4543915b-faee-4561-8aae-8a8a8ffe1ab7
+- !<SceneObject/923a9d8d-fc7f-4ef6-9ca3-2a214e1d9c0a>
+  PrefabRemaps:
+    []
+  Name: BouncingBubble
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> 50f700d9-0519-4eb1-bfcd-4841976e0284
+  Components:
+    - !<own> f7c90db8-8fc0-4d25-83f4-452a0a570ee0
+- !<AnimationPlayer/f7c90db8-8fc0-4d25-83f4-452a0a570ee0>
+  PrefabRemaps:
+    []
+  Name: component_1
+  Enabled: true
+  Autoplay: true
+  ClipRangeType: Frames
+  AnimationClips:
+    - !<AnimationClip>
+      AnimationAsset: !<reference> dd755d9a-ab89-4100-adc1-c913ed864998
+      Name: Sphere|SphereAction
+      Weight: 1.000000
+      PlaybackSpeed: 1.000000
+      Begin: 0.000000
+      End: 366.250000
+      Reversed: false
+      Disabled: false
+      BlendMode: Default
+      ScaleMode: Multiply
+      PlaybackMode: Loop

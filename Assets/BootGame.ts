@@ -19,6 +19,7 @@ type StateMachineConfig = {
   audioPlayer: AudioComponent;
   calibrationUISteps: SceneObject[];
   englishAudioFiles: AudioFiles;
+  bubble: SceneObject;
 };
 
 enum States {
@@ -41,6 +42,7 @@ export class NewScript extends BaseScriptComponent {
   @input groundPlacement: GroundPlacement;
   @input textContainer: SceneObject;
   @input headData: HeadData;
+  @input bubble: SceneObject;
 
   @input englishAudioFiles: AudioFiles;
 
@@ -75,6 +77,7 @@ export class NewScript extends BaseScriptComponent {
       calibrationUISteps: this.calibrationUISteps,
       englishAudioFiles: this.englishAudioFiles,
       audioPlayer: this.audioPlayer,
+      bubble: this.bubble,
     };
 
     this.setUpStateMachine(config);
@@ -91,6 +94,7 @@ export class NewScript extends BaseScriptComponent {
       calibrationUISteps,
       audioPlayer,
       englishAudioFiles,
+      bubble,
     } = config;
     stateMachine.addState({
       name: States.GROUND_CALIBRATION,
@@ -191,6 +195,7 @@ export class NewScript extends BaseScriptComponent {
             return signal === States.PHONE_IN_POCKET;
           },
           onExecution() {
+            audioPlayer.pause();
             calibrationUISteps[1].enabled = false;
           },
         },
@@ -207,7 +212,7 @@ export class NewScript extends BaseScriptComponent {
         audioPlayer.setOnFinish(() => {
           setTimeout(() => {
             stateMachine.sendSignal(States.GET_WALKER);
-          }, 4000);
+          }, 3500);
           audioPlayer.setOnFinish(() => null);
         });
         audioPlayer.play(1);
@@ -219,6 +224,7 @@ export class NewScript extends BaseScriptComponent {
             return signal === States.GET_WALKER;
           },
           onExecution() {
+            audioPlayer.pause();
             calibrationUISteps[2].enabled = false;
           },
         },
@@ -256,6 +262,7 @@ export class NewScript extends BaseScriptComponent {
           },
           onExecution() {
             calibrationUISteps[3].enabled = false;
+            audioPlayer.pause();
           },
         },
       ],
@@ -265,13 +272,15 @@ export class NewScript extends BaseScriptComponent {
       name: States.STAND_STRAIGHT,
       onEnter: () => {
         calibrationUISteps[4].enabled = true;
+        audioPlayer.audioTrack = englishAudioFiles.getTracks()[8];
+        audioPlayer.play(1);
         setTimeout(() => {
           calibrationUISteps[4].enabled = false;
           calibrationUISteps[5].enabled = true;
           setTimeout(() => {
             stateMachine.sendSignal(States.FOLLOW);
-          }, 3000);
-        }, 3000);
+          }, 6000);
+        }, 6000);
       },
       transitions: [
         {
@@ -282,6 +291,7 @@ export class NewScript extends BaseScriptComponent {
           onExecution() {
             calibrationUISteps[4].enabled = false;
             calibrationUISteps[5].enabled = false;
+            audioPlayer.pause();
           },
         },
       ],
@@ -299,14 +309,22 @@ export class NewScript extends BaseScriptComponent {
         // play tracks7 8 9 back to back
         audioPlayer.audioTrack = englishAudioFiles.getTracks()[7];
         audioPlayer.setOnFinish(() => {
-          audioPlayer.audioTrack = englishAudioFiles.getTracks()[8];
+          audioPlayer.audioTrack = englishAudioFiles.getTracks()[9];
           audioPlayer.play(1);
           audioPlayer.setOnFinish(() => {
-            audioPlayer.audioTrack = englishAudioFiles.getTracks()[9];
-            audioPlayer.play(1);
             audioPlayer.setOnFinish(() => null);
           });
         });
+        // show bubble 460 cm in front of user using cam forward vector
+        bubble.getTransform().setWorldPosition(
+          this.camObject
+            .getTransform()
+            .getWorldPosition()
+            .add(
+              this.camObject.getTransform().forward.add(new vec3(0, 0, -460))
+            )
+        );
+        bubble.enabled = true;
         audioPlayer.play(1);
       },
     });

@@ -16,6 +16,7 @@
     - !<own> 14ff0b19-b6f7-4b06-9d1b-66e67cfa6c10
     - !<own> 26202f67-c24e-4093-b218-3183529c23a0
     - !<own> ceeef374-62cd-42b7-a43f-6ed457898cb9
+    - !<own> 67285645-d93d-4484-9fd6-0fe87e657b4c
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       []
@@ -2719,6 +2720,26 @@
     []
   Components:
     []
+- !<RenderMeshVisual/28857804-a033-4aee-a4b2-598d4b6d1af6>
+  PrefabRemaps:
+    []
+  Name: component_0
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 6ed28038-90d3-409e-9797-6c1cdd368e26
+  Mesh: !<reference> 686a3de7-2fb0-41a8-85e3-3530b1068b77
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
 - !<ColliderComponent/288d782c-f80e-4745-bc72-6324728d9ad9>
   PrefabRemaps:
     []
@@ -4959,6 +4980,10 @@
     "":
       camObject: !<reference.SceneObject> 00000000-0000-0065-0000-000000000064
       warningUI: !<reference.SceneObject> 14ff0b19-b6f7-4b06-9d1b-66e67cfa6c10
+      audioPlayer: !<reference.AudioComponent> 9ef8f4b3-a1f7-41b0-ac03-4abcb5bf4377
+      audioTracks: !<reference.AudioTrackAsset[]>
+        - !<reference> 3c3fb371-d576-42d9-b5ae-f620bf3e401c
+        - !<reference> 3bbd6caf-5c74-4671-a9d4-271c175219fc
       distanceThreshold: !<float> -5.000000
   ScriptTypes:
     "":
@@ -6134,6 +6159,24 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/67285645-d93d-4484-9fd6-0fe87e657b4c>
+  PrefabRemaps:
+    - 28857804-a033-4aee-a4b2-598d4b6d1af6: 4543915b-faee-4561-8aae-8a8a8ffe1ab7
+    - 67285645-d93d-4484-9fd6-0fe87e657b4c: 923a9d8d-fc7f-4ef6-9ca3-2a214e1d9c0a
+    - 73c30ed4-584e-4857-85e6-16e89f033a4d: 50f700d9-0519-4eb1-bfcd-4841976e0284
+    - 9af0f1f0-eb61-4d32-a503-85ae5cd1493c: f7c90db8-8fc0-4d25-83f4-452a0a570ee0
+  Name: BouncingBubble
+  Enabled: false
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: -80.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> 73c30ed4-584e-4857-85e6-16e89f033a4d
+  Components:
+    - !<own> 9af0f1f0-eb61-4d32-a503-85ae5cd1493c
 - !<SceneObject/674c121a-0fd0-437d-879c-9ce6b8f935fb>
   PrefabRemaps:
     []
@@ -7194,6 +7237,21 @@
     []
   Components:
     - !<own> fc6a94ee-23d6-4637-a73b-30ac1b571eca
+- !<SceneObject/73c30ed4-584e-4857-85e6-16e89f033a4d>
+  PrefabRemaps:
+    []
+  Name: Sphere
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: -10.000000, z: 0.000000}
+    rotation: {x: -90.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 13.356531, y: 13.356531, z: 13.356531}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 28857804-a033-4aee-a4b2-598d4b6d1af6
 - !<SceneObject/73cc2913-eba2-4d3f-a77d-0ea5de7412ba>
   PrefabRemaps:
     []
@@ -7232,7 +7290,7 @@
   Enabled: true
   AudioTrack: !<reference> 3c3cbef0-0de7-4dab-b8f3-16887bf9930e
   EnableAutoplayLoop: true
-  Volume: 0.100000
+  Volume: 0.050000
   EnableMixToSnap: false
   RecordVolume: 1.000000
   EnableSpatialAudio: false
@@ -7638,6 +7696,7 @@
       groundPlacement: !<MappingBased.GroundPlacement> acd895d5-70d4-4056-a5c5-3eae2fc4cfb4
       textContainer: !<reference.SceneObject> d387093b-00a9-4e77-827f-d97a6674158b
       headData: !<MappingBased.HeadData> 536ce221-1b3b-4e55-92ac-3d0fabe91195
+      bubble: !<reference.SceneObject> 67285645-d93d-4484-9fd6-0fe87e657b4c
       englishAudioFiles: !<MappingBased.AudioFiles> 735e694b-b856-44fc-8802-91a71f062ff3
       audioPlayer: !<reference.AudioComponent> 9ef8f4b3-a1f7-41b0-ac03-4abcb5bf4377
       phoneController: !<MappingBased.MotionController> 5a658daf-fa78-46b4-a1db-45e2ff566eb4
@@ -9624,6 +9683,26 @@
   ScriptTypes:
     "":
       {}
+- !<AnimationPlayer/9af0f1f0-eb61-4d32-a503-85ae5cd1493c>
+  PrefabRemaps:
+    []
+  Name: component_1
+  Enabled: true
+  Autoplay: true
+  ClipRangeType: Frames
+  AnimationClips:
+    - !<AnimationClip>
+      AnimationAsset: !<reference> dd755d9a-ab89-4100-adc1-c913ed864998
+      Name: Sphere|SphereAction
+      Weight: 1.000000
+      PlaybackSpeed: 1.000000
+      Begin: 0.000000
+      End: 366.250000
+      Reversed: false
+      Disabled: false
+      BlendMode: Default
+      ScaleMode: Multiply
+      PlaybackMode: Loop
 - !<SceneObject/9b586360-5bcd-4bd9-9646-5b5ef75f1788>
   PrefabRemaps:
     []

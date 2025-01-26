@@ -1,0 +1,189 @@
+- !<Material/6ed28038-90d3-409e-9797-6c1cdd368e26>
+  PackagePath: ""
+  PassesInfo:
+    - !<own> 388fcb61-fe9a-4e81-8a1a-bed1e970bee2
+- !<PassInfo/388fcb61-fe9a-4e81-8a1a-bed1e970bee2>
+  CachedProperties:
+    - Port_Depth_N004:
+        typeIdx: 1
+        value: 1.000000
+    - Port_FinalColor1_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_FinalColor2_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_FinalColor3_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_GSplatPointSize_N004:
+        typeIdx: 1
+        value: 0.000000
+    - Port_LODValue_N065:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Normal_N006:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_RayDirection_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_RayOrigin_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_Value3_N056:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Value3_N064:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Value4_N056:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Value4_N064:
+        typeIdx: 1
+        value: 0.000000
+    - Port_WorldNormal_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_WorldPosition_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_WorldTangent_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 1.000000}
+    - isProxyMode:
+        typeIdx: 2
+        value: false
+    - mainColor:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - receivesRayTracedAo:
+        typeIdx: 2
+        value: false
+    - receivesRayTracedDiffuseIndirect:
+        typeIdx: 2
+        value: false
+    - receivesRayTracedReflections:
+        typeIdx: 2
+        value: false
+    - receivesRayTracedShadows:
+        typeIdx: 2
+        value: false
+  DepthWrite: true
+  DepthTest: true
+  DepthFunction: LessEqual
+  TwoSided: false
+  ColorMask: {x: true, y: true, z: true, w: true}
+  CullMode: Back
+  PolygonOffset: {x: 0.000000, y: 0.000000}
+  FrustumCulling: Auto
+  FrustumCullPad: 0.000000
+  InstanceCount: 1
+  Defines:
+    []
+  BlendMode: Glass
+  Properties:
+    Intensity:
+      typeIdx: 1
+      value: 3.000000
+    Port_AO_N006:
+      typeIdx: 4
+      value: {x: 1.000000, y: 1.000000, z: 1.000000}
+    Port_Emissive_N006:
+      typeIdx: 4
+      value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Port_Input1_N017:
+      typeIdx: 1
+      value: 2.000000
+    Port_Input1_N024:
+      typeIdx: 1
+      value: 1.000000
+    Port_Input1_N058:
+      typeIdx: 1
+      value: 0.500000
+    Port_Input2_N060:
+      typeIdx: 1
+      value: 0.200000
+    Port_Metallic_N006:
+      typeIdx: 1
+      value: 0.000000
+    Port_RangeMaxA_N063:
+      typeIdx: 1
+      value: 1.000000
+    Port_RangeMaxA_N076:
+      typeIdx: 1
+      value: 0.900000
+    Port_RangeMaxB_N063:
+      typeIdx: 1
+      value: 0.833500
+    Port_RangeMaxB_N076:
+      typeIdx: 1
+      value: 1.000000
+    Port_RangeMinA_N063:
+      typeIdx: 1
+      value: 0.000000
+    Port_RangeMinA_N076:
+      typeIdx: 1
+      value: 0.000000
+    Port_RangeMinB_N063:
+      typeIdx: 1
+      value: 0.166500
+    Port_RangeMinB_N076:
+      typeIdx: 1
+      value: 0.150000
+    Port_Scale_N057:
+      typeIdx: 3
+      value: {x: 3.000000, y: 3.000000}
+    Port_SpecularAO_N006:
+      typeIdx: 4
+      value: {x: 1.000000, y: 1.000000, z: 1.000000}
+    PreviewEnabled:
+      typeIdx: 0
+      value: 0
+    exponent:
+      typeIdx: 1
+      value: 0.260000
+    iridescenceMap:
+      typeIdx: 9
+      value:
+        id: af323548-0fb6-4833-8055-d1c7e4404007
+        sampler:
+          filteringMode: Trilinear
+          wrapModeU: Repeat
+          wrapModeV: Repeat
+          wrapModeW: Repeat
+          borderColor: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+          mipmaps: true
+        type: Texture2D
+    iridescenceMapBorderColor:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    iridescenceMapDims:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    iridescenceMapTransform:
+      typeIdx: 7
+      value:
+        0: {x: 1.000000, y: 0.000000, z: 0.000000}
+        1: {x: 0.000000, y: 1.000000, z: 0.000000}
+        2: {x: 0.000000, y: 0.000000, z: 1.000000}
+    iridescenceMapUvMinMax:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    noiseIntensity:
+      typeIdx: 1
+      value: 2.000000
+    noiseScale:
+      typeIdx: 3
+      value: {x: 0.600000, y: 0.600000}
+    opacity:
+      typeIdx: 1
+      value: 1.000000
+    roughness:
+      typeIdx: 1
+      value: 0.020000
+    thinFilmWeight:
+      typeIdx: 1
+      value: 1.000000
+  Pass: !<reference> 60fe4a71-e745-46d9-939d-f75068578e3b
