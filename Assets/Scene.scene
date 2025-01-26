@@ -16,6 +16,7 @@
     - !<own> 14ff0b19-b6f7-4b06-9d1b-66e67cfa6c10
     - !<own> 26202f67-c24e-4093-b218-3183529c23a0
     - !<own> ceeef374-62cd-42b7-a43f-6ed457898cb9
+    - !<own> 90bf90f9-ff94-4bbd-98f4-26a0c50675a7
     - !<own> 67285645-d93d-4484-9fd6-0fe87e657b4c
     - !<own> 7322548e-33e9-4006-b24e-6cd9cb1d2ad7
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
@@ -5016,7 +5017,7 @@
     "":
       camObject: !<reference.SceneObject> 00000000-0000-0065-0000-000000000064
       warningUI: !<reference.SceneObject> 14ff0b19-b6f7-4b06-9d1b-66e67cfa6c10
-      audioPlayer: !<reference.AudioComponent> 9ef8f4b3-a1f7-41b0-ac03-4abcb5bf4377
+      audioPlayer: !<reference.AudioComponent> cbb17cd0-08aa-47bd-895e-5cff9cf7273f
       audioTracks: !<reference.AudioTrackAsset[]>
         - !<reference> 3c3fb371-d576-42d9-b5ae-f620bf3e401c
         - !<reference> 3bbd6caf-5c74-4671-a9d4-271c175219fc
@@ -9236,6 +9237,21 @@
     - !<own> e136b9a2-8a37-4184-ab37-94e8afa47a33
     - !<own> b3638d6c-5f3e-48f4-b0ed-dfb7bedc6e16
     - !<own> 2d1d4e99-2eba-40f3-a19b-2206cfc6cde6
+- !<SceneObject/90bf90f9-ff94-4bbd-98f4-26a0c50675a7>
+  PrefabRemaps:
+    []
+  Name: feedback player
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> cbb17cd0-08aa-47bd-895e-5cff9cf7273f
 - !<RenderMeshVisual/90d0ea71-3718-4780-864b-a3907755de0a>
   PrefabRemaps:
     []
@@ -9966,9 +9982,9 @@
   Enabled: true
   AudioTrack: !<reference> 00000000-0000-0000-0000-000000000000
   EnableAutoplayLoop: false
-  Volume: 1.000000
+  Volume: 0.800000
   EnableMixToSnap: true
-  RecordVolume: 1.000000
+  RecordVolume: 0.800000
   EnableSpatialAudio: false
   EnableDistanceEffect: false
   CurveType: Logarithm
@@ -12276,7 +12292,7 @@
   PrefabRemaps:
     []
   Name: walker marker
-  Enabled: false
+  Enabled: true
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -12448,6 +12464,23 @@
     []
   Components:
     []
+- !<AudioComponent/cbb17cd0-08aa-47bd-895e-5cff9cf7273f>
+  PrefabRemaps:
+    []
+  Name: Audio
+  Enabled: true
+  AudioTrack: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableAutoplayLoop: false
+  Volume: 1.000000
+  EnableMixToSnap: true
+  RecordVolume: 1.000000
+  EnableSpatialAudio: false
+  EnableDistanceEffect: false
+  CurveType: Logarithm
+  MinDistance: 0.000000
+  MaxDistance: 100.000000
+  EnableDirectivityEffect: false
+  EnablePositionEffect: false
 - !<Text/cc59c548-1073-432f-a3f3-f7c64e11ed14>
   PrefabRemaps:
     []
