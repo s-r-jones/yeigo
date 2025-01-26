@@ -48,6 +48,7 @@
     - !<own> 0173c851-c567-4bdb-bfa1-c47f74aa6c8b
     - !<own> eb8854c9-cc37-4c50-a3df-3eb73f5a10a5
     - !<own> acadefa1-47e9-4527-b776-93509f3e0e66
+    - !<own> 4d8afce3-042d-46be-8ba4-e9423720766f
   Components:
     - !<own> 00000000-0000-0065-0000-000000000065
     - !<own> e5553c8a-0b7e-4ef4-92d9-3e1318fb82c1
@@ -3846,6 +3847,7 @@
     []
   Components:
     - !<own> 9f2b3f06-77a1-4255-830d-ad50801287bd
+    - !<own> e007d61d-e375-4c4c-bbd9-08ce81230350
 - !<Skin/32346fd9-8168-4666-87d9-78060a1ebed2>
   PrefabRemaps:
     []
@@ -4153,6 +4155,24 @@
     []
   Components:
     - !<own> 0de7170b-78ff-4857-999f-6b13d2784aed
+- !<ColliderComponent/37d13abc-f42e-4039-940a-0d6dac926207>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: true
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 8.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
 - !<SceneObject/37ed3092-73e5-420b-aedb-656b1c84ac79>
   PrefabRemaps:
     []
@@ -5041,6 +5061,22 @@
   Components:
     - !<own> 82077845-5d34-41ca-8a29-b1b1e48a5f8a
     - !<own> fc150902-4b28-4b98-a419-1f0b2085126f
+- !<SceneObject/4d8afce3-042d-46be-8ba4-e9423720766f>
+  PrefabRemaps:
+    []
+  Name: Box
+  Enabled: false
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: -30.000000}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 10.000000, y: 10.000000, z: 10.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> ce6a10d2-d719-4664-8a30-ef9c66253a69
+    - !<own> d00bb500-a310-4bac-8903-002e3406ae72
 - !<SceneObject/4e51c7da-93cd-49bc-92ba-ac1b17778914>
   PrefabRemaps:
     []
@@ -8330,6 +8366,7 @@
     []
   Components:
     - !<own> de62f5f3-2f86-4c98-b357-a44d603496f1
+    - !<own> 37d13abc-f42e-4039-940a-0d6dac926207
 - !<ScriptComponent/78b44757-02c6-4cc7-b148-369f595dd21b>
   PrefabRemaps:
     []
@@ -8359,6 +8396,13 @@
       menu: !<reference.SceneObject> 6a2a9c79-0f11-4f97-adba-95545ca5620f
       englishAudioFiles: !<MappingBased.AudioFiles> 735e694b-b856-44fc-8802-91a71f062ff3
       dineAudioFiles: !<MappingBased.AudioFiles> 65f51e13-5c9d-4a75-b2f7-ca40673b7224
+      handMeshes: !<reference.RenderMeshVisual[]>
+        - !<reference> 9f2b3f06-77a1-4255-830d-ad50801287bd
+        - !<reference> de62f5f3-2f86-4c98-b357-a44d603496f1
+      handMaterialStart: !<reference.Material[]>
+        - !<reference> 4254844d-aef9-45e9-87f1-d6ab7d608c4f
+        - !<reference> 03d33697-6495-4e15-9a2d-646411a514a9
+      handMaterialOverlap: !<reference.Material> 5d1dc53b-ab63-48a7-9c92-911b6d6d9384
       audioPlayer: !<reference.AudioComponent> 9ef8f4b3-a1f7-41b0-ac03-4abcb5bf4377
       phoneController: !<MappingBased.MotionController> 5a658daf-fa78-46b4-a1db-45e2ff566eb4
       walkerMarker: !<reference.SceneObject> c77e39b2-1852-4fab-8e63-1878f543a8f5
@@ -9400,26 +9444,6 @@
     bottom: 0.000000
     right: 0.000000
     top: 0.000000
-- !<RenderMeshVisual/89b38745-ef24-4bde-b0d4-c8840ed4e8ca>
-  PrefabRemaps:
-    []
-  Name: Render Mesh Visual
-  Enabled: true
-  RenderOrder: 0
-  StretchMode: Stretch
-  VerticalAlignment: Center
-  HorizontalAlignment: Center
-  MeshShadowMode: None
-  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-  ShadowDensity: 1.000000
-  Materials:
-    - !<reference> 666e4fbc-d860-49b7-ae11-cedd4904a430
-  Mesh: !<reference> fa150aa3-3740-4c32-8a2c-e7f4d9420fbf
-  Skin: !<reference> 00000000-0000-0000-0000-000000000000
-  BlendShapesEnabled: true
-  BlendNormals: false
-  BlendShapes:
-    {}
 - !<ScriptComponent/89f336af-a54a-4771-9123-43c3e0d36098>
   PrefabRemaps:
     []
@@ -10641,7 +10665,7 @@
     []
   Name: component_0
   Enabled: true
-  RenderOrder: 9999
+  RenderOrder: 9998
   StretchMode: Stretch
   VerticalAlignment: Center
   HorizontalAlignment: Center
@@ -12743,6 +12767,21 @@
   Components:
     - !<own> 638efe86-613f-4735-a142-375f9fb83afe
     - !<own> 5367e022-22f0-4dfc-9033-fee474422327
+- !<SceneObject/c487e872-ca29-452e-860d-0576ca2fa267>
+  PrefabRemaps:
+    []
+  Name: Object
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> de264136-3337-42bd-b011-fe3c50025fca
 - !<ScriptComponent/c4b1a1e6-7665-4e82-989c-66a8fab1e47d>
   PrefabRemaps:
     []
@@ -12998,9 +13037,9 @@
     scale: {x: 85.000000, y: 85.000000, z: 85.000000}
     hasSegmentScaleCompensation: false
   Children:
-    []
+    - !<own> c487e872-ca29-452e-860d-0576ca2fa267
   Components:
-    - !<own> 89b38745-ef24-4bde-b0d4-c8840ed4e8ca
+    []
 - !<SceneObject/c7917edc-96c0-433f-b587-1ef49f7fc257>
   PrefabRemaps:
     []
@@ -13408,6 +13447,26 @@
   ScriptTypes:
     "":
       {}
+- !<RenderMeshVisual/ce6a10d2-d719-4664-8a30-ef9c66253a69>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 5413f265-ec75-4442-8fb2-7077b97b2280
+  Mesh: !<reference> c65cfd38-9aa8-4632-8b1b-515cf0ad829d
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
 - !<RenderMeshVisual/ce8466fa-1f06-4ffe-9845-a396fcd77c99>
   PrefabRemaps:
     []
@@ -13557,6 +13616,24 @@
     - !<own> 6229e282-4449-48f3-8ef5-b90c67ba62fd
   Components:
     []
+- !<ColliderComponent/d00bb500-a310-4bac-8903-002e3406ae72>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: true
+  Shape: !<Box>
+    FitVisual: true
+    Size: {x: 15.000000, y: 15.000000, z: 15.000000}
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: true
 - !<ScreenTransform/d02de6b8-12a1-4901-b4fa-9d19c4742118>
   PrefabRemaps:
     []
@@ -14356,6 +14433,26 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<RenderMeshVisual/de264136-3337-42bd-b011-fe3c50025fca>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 9999
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 666e4fbc-d860-49b7-ae11-cedd4904a430
+  Mesh: !<reference> fa150aa3-3740-4c32-8a2c-e7f4d9420fbf
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
 - !<SceneObject/de34385c-1796-499f-a145-30de42478770>
   PrefabRemaps:
     []
@@ -14377,7 +14474,7 @@
     []
   Name: component_0
   Enabled: true
-  RenderOrder: 9999
+  RenderOrder: 9998
   StretchMode: Stretch
   VerticalAlignment: Center
   HorizontalAlignment: Center
@@ -14449,6 +14546,24 @@
     - !<own> f00fea39-9eb8-4a3a-9afe-47d1a20fcade
     - !<own> 1becfa95-9512-47d7-b458-5c095cf8aab4
     - !<own> 7a693d58-f56e-4a23-a5b4-3c7927f0818d
+- !<ColliderComponent/e007d61d-e375-4c4c-bbd9-08ce81230350>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: true
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 7.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
 - !<SceneObject/e01f28f1-602b-4d5f-8baa-63b0f3957776>
   PrefabRemaps:
     []

@@ -52,6 +52,10 @@ export class NewScript extends BaseScriptComponent {
   @input englishAudioFiles: AudioFiles;
   @input dineAudioFiles: AudioFiles;
 
+  @input handMeshes: RenderMeshVisual[];
+  @input handMaterialStart: Material[];
+  @input handMaterialOverlap: Material;
+
   @input
   audioPlayer: AudioComponent;
 
@@ -93,6 +97,32 @@ export class NewScript extends BaseScriptComponent {
 
     this.setUpStateMachine(config);
     this.stateMachine.enterState(States.MENU);
+
+    // this.walkeMarkerCollider.onOverlapEnter.add(
+    //   (arg: OverlapEnterEventArgs) => {
+    //     const overlapName = arg.overlap.collider.sceneObject.name;
+    //     ScreenLogger.getInstance().log("Overlap Enter " + overlapName);
+    //     if (overlapName.includes("Left")) {
+    //       this.handMeshes[0].clearMaterials();
+    //       this.handMeshes[0].addMaterial(this.handMaterialOverlap);
+    //     } else if (overlapName.includes("Right")) {
+    //       this.handMeshes[1].clearMaterials();
+    //       this.handMeshes[1].addMaterial(this.handMaterialOverlap);
+    //     }
+    //   }
+    // );
+
+    // this.walkeMarkerCollider.onOverlapExit.add((arg: OverlapExitEventArgs) => {
+    //   ScreenLogger.getInstance().log("Overlap Exit");
+    //   const overlapName = arg.overlap.collider.sceneObject.name;
+    //   if (overlapName.includes("left")) {
+    //     this.handMeshes[0].clearMaterials();
+    //     this.handMeshes[0].addMaterial(this.handMaterialStart[0]);
+    //   } else if (overlapName.includes("right")) {
+    //     this.handMeshes[1].clearMaterials();
+    //     this.handMeshes[1].addMaterial(this.handMaterialStart[1]);
+    //   }
+    // });
   }
 
   private setUpStateMachine = (config: StateMachineConfig) => {
@@ -210,7 +240,7 @@ export class NewScript extends BaseScriptComponent {
             this.handPosition = this.phoneController
               .getTransform()
               .getWorldPosition()
-              .add(new vec3(0, 10, -5));
+              .add(new vec3(0, 10, -38));
             this.walkerMarker
               .getTransform()
               .setWorldPosition(this.handPosition);
@@ -292,7 +322,7 @@ export class NewScript extends BaseScriptComponent {
               audioPlayer.setOnFinish(() => null);
             });
             audioPlayer.play(1);
-          }, 4000);
+          }, 7000);
         });
         audioPlayer.play(1);
       },
