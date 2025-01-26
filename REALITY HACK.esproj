@@ -21,9 +21,9 @@ metaInfo:
     []
   tags:
     []
-  lensName: REALITY HACK
+  lensName: Yeigo5
   lensDescriptors:
-    []
+    - EXPERIMENTAL_API
   lensApplicability:
     - Front
     - Back

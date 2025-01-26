@@ -35,6 +35,7 @@ enum States {
   GET_WALKER = "GetWalker",
   STAND_STRAIGHT = "StandStraight",
   DONT_LEAN = "DontLean",
+  MENU = "Menu",
 }
 
 @component
@@ -47,7 +48,7 @@ export class NewScript extends BaseScriptComponent {
   @input headData: HeadData;
   @input bubble: SceneObject;
   @input signs: SceneObject;
-
+  @input menu: SceneObject;
   @input englishAudioFiles: AudioFiles;
 
   @input
@@ -89,7 +90,7 @@ export class NewScript extends BaseScriptComponent {
     };
 
     this.setUpStateMachine(config);
-    this.stateMachine.enterState(States.PHONE_CALIBRATION);
+    this.stateMachine.enterState(States.MENU);
   }
 
   private setUpStateMachine = (config: StateMachineConfig) => {
@@ -105,6 +106,23 @@ export class NewScript extends BaseScriptComponent {
       bubble,
       signs,
     } = config;
+
+    stateMachine.addState({
+      name: States.MENU,
+      onEnter: () => {
+        this.menu.enabled = true;
+
+        this.menu.getTransform().setWorldPosition(
+          this.camObject
+            .getTransform()
+            .getWorldPosition()
+            .add(
+              this.camObject.getTransform().forward.add(new vec3(0, 0, -120))
+            )
+        );
+      },
+    });
+
     stateMachine.addState({
       name: States.GROUND_CALIBRATION,
       onEnter: (state) => {

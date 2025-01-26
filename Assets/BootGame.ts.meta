@@ -34,6 +34,7 @@
     groundPlacement: false
     headData: false
     instructionText: false
+    menu: false
     phoneController: false
     signs: false
     textContainer: false
@@ -55,6 +56,7 @@
       bubble: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       signs: !<reference.SceneObject[]>
         []
+      menu: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -67,6 +69,7 @@
     - // @input HeadData headData
     - // @input SceneObject bubble
     - // @input SceneObject signs
+    - // @input SceneObject menu
     - // @input AudioFiles englishAudioFiles
     - // @input Component.AudioComponent audioPlayer
     - // @input MotionController phoneController

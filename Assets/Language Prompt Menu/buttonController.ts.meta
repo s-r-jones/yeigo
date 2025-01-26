@@ -1,0 +1,41 @@
+- !<AssetImportMetadata/453c58c7-177b-4e32-8e06-df880ccfdb74>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> aaeb0d75-f3f4-4f11-bd22-97906d4dbe0c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> aaeb0d75-f3f4-4f11-bd22-97906d4dbe0c
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ae9c9a3e-ddf7-4eb8-ba8f-e7d4d7dbe15a
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings/f41669a6-cbd6-4a80-9e8a-b8cf2653708d>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ae9c9a3e-ddf7-4eb8-ba8f-e7d4d7dbe15a>
+  SvgIcon: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 00000000-0000-0000-0000-000000000000
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    tex_1: false
+    tex_2: false
+  ScriptTypesHidden:
+    {}
+  DefaultScriptInputs:
+    - tex_1: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      tex_2: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Asset.Texture tex_1
+    - // @input Asset.Texture tex_2
