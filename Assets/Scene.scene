@@ -2,6 +2,7 @@
   PackagePath: ""
   objects:
     - !<own> 36a87162-9925-4cd1-a53e-63c0ca590c4c
+    - !<own> 602c5baa-400d-4de9-8532-fdffea8dd033
     - !<own> 5ca21e7c-d113-4432-81a3-da2caaa30ef3
     - !<own> 0005641c-028d-459a-0000-000000014b4d
     - !<own> 00000000-0000-0065-0000-000000000064
@@ -6185,6 +6186,21 @@
     - !<own> 411b54bc-1db6-4fe9-908b-1f4f0a372ce0
   Components:
     []
+- !<SceneObject/602c5baa-400d-4de9-8532-fdffea8dd033>
+  PrefabRemaps:
+    []
+  Name: Dine Audio Files
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 65f51e13-5c9d-4a75-b2f7-ca40673b7224
 - !<ScriptComponent/60322f26-9917-4e2a-bd56-581947d84852>
   PrefabRemaps:
     []
@@ -6529,6 +6545,39 @@
   BodySettingValue: 1.000000
   Damping: 0.000000
   AngularDamping: 0.000000
+- !<ScriptComponent/65f51e13-5c9d-4a75-b2f7-ca40673b7224>
+  PrefabRemaps:
+    []
+  Name: AudioFiles
+  Enabled: true
+  ScriptAsset: !<reference> 645a1f06-495b-424e-8f65-5491b5bf60bf
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      audioTracks: !<reference.AudioTrackAsset[]>
+        - !<reference> 3bb3084e-765b-411c-8283-4b994376bce8
+        - !<reference> 8fc1dd2a-22af-4771-8c34-468743f77f4a
+        - !<reference> 9fc38bdc-22d6-4150-9540-d3717ffaf8d0
+        - !<reference> bcfdf296-b9e8-48d6-b2ab-8b69c9bffce1
+        - !<reference> b0211d56-5392-4251-9a05-c66e64e035d9
+        - !<reference> b0211d56-5392-4251-9a05-c66e64e035d9
+        - !<reference> 342ade96-49de-4da0-8543-8763370d1d4b
+        - !<reference> 8c5348fe-cd78-4756-a37a-caa961254261
+        - !<reference> 0aeaaab9-57dd-4fe0-99dd-ac25b1ceac4c
+        - !<reference> ea3c86b4-ef38-497c-97d6-fc1e252e28e7
+        - !<reference> eb5d399c-d0ba-4a0b-83af-c58ccdf03c12
+        - !<reference> cb01d180-d7e7-481e-b55e-30dbddbb156a
+        - !<reference> c4fdc302-9ac3-4023-92b1-c17a56e8e9e4
+        - !<reference> 60f3d254-ecae-4721-90a1-37b4f9916046
+        - !<reference> e98c661e-398f-4076-bf40-a0ba02146339
+        - !<reference> e409a5d9-1307-4058-9d0a-d7265790ec68
+        - !<reference> 7fcd0316-2390-4564-8ab0-8e2d8891ab54
+  ScriptTypes:
+    "":
+      {}
 - !<ScreenTransform/66258ab8-1a60-4dc2-aee5-820ac8efc2e0>
   PrefabRemaps:
     []
@@ -7762,6 +7811,7 @@
         - !<reference> d808a533-80e2-4540-9a27-ee484907fad0
         - !<reference> 2fc3604e-be68-4957-af21-32161ca988ce
         - !<reference> 3c3fb371-d576-42d9-b5ae-f620bf3e401c
+        - !<reference> e0b6fdbe-e30b-4fb1-82f0-1a0cfced19cb
   ScriptTypes:
     "":
       {}
@@ -8308,6 +8358,7 @@
       signs: !<reference.SceneObject> 7322548e-33e9-4006-b24e-6cd9cb1d2ad7
       menu: !<reference.SceneObject> 6a2a9c79-0f11-4f97-adba-95545ca5620f
       englishAudioFiles: !<MappingBased.AudioFiles> 735e694b-b856-44fc-8802-91a71f062ff3
+      dineAudioFiles: !<MappingBased.AudioFiles> 65f51e13-5c9d-4a75-b2f7-ca40673b7224
       audioPlayer: !<reference.AudioComponent> 9ef8f4b3-a1f7-41b0-ac03-4abcb5bf4377
       phoneController: !<MappingBased.MotionController> 5a658daf-fa78-46b4-a1db-45e2ff566eb4
       walkerMarker: !<reference.SceneObject> c77e39b2-1852-4fab-8e63-1878f543a8f5

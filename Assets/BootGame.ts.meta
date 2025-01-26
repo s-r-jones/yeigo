@@ -30,6 +30,7 @@
     bubble: false
     calibrationUISteps: false
     camObject: false
+    dineAudioFiles: false
     englishAudioFiles: false
     groundPlacement: false
     headData: false
@@ -57,6 +58,7 @@
       signs: !<reference.SceneObject[]>
         []
       menu: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      dineAudioFiles: !<MappingBased.AudioFiles> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -71,6 +73,7 @@
     - // @input SceneObject signs
     - // @input SceneObject menu
     - // @input AudioFiles englishAudioFiles
+    - // @input AudioFiles dineAudioFiles
     - // @input Component.AudioComponent audioPlayer
     - // @input MotionController phoneController
     - // @input SceneObject walkerMarker

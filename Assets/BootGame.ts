@@ -50,6 +50,7 @@ export class NewScript extends BaseScriptComponent {
   @input signs: SceneObject;
   @input menu: SceneObject;
   @input englishAudioFiles: AudioFiles;
+  @input dineAudioFiles: AudioFiles;
 
   @input
   audioPlayer: AudioComponent;
@@ -66,6 +67,7 @@ export class NewScript extends BaseScriptComponent {
   private trackHead: boolean = false;
 
   private signObjects: SceneObject[] = [];
+  private isEnglish: boolean = true;
 
   onAwake() {
     this.textContainer.enabled = false;
@@ -402,5 +404,17 @@ export class NewScript extends BaseScriptComponent {
         audioPlayer.play(1);
       },
     });
+  };
+
+  public englishMode = () => {
+    this.isEnglish = true;
+    this.menu.enabled = false;
+    this.stateMachine.enterState(States.PHONE_CALIBRATION);
+  };
+
+  public dineMode = () => {
+    this.isEnglish = false;
+    this.menu.enabled = false;
+    this.stateMachine.enterState(States.PHONE_CALIBRATION);
   };
 }
