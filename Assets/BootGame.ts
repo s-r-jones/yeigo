@@ -112,8 +112,6 @@ export class NewScript extends BaseScriptComponent {
     stateMachine.addState({
       name: States.MENU,
       onEnter: () => {
-        this.menu.enabled = true;
-
         this.menu.getTransform().setWorldPosition(
           this.camObject
             .getTransform()
@@ -122,6 +120,9 @@ export class NewScript extends BaseScriptComponent {
               this.camObject.getTransform().forward.add(new vec3(0, 0, -120))
             )
         );
+        audioPlayer.audioTrack = this.englishAudioFiles.getTracks()[12];
+        audioPlayer.play(1);
+        this.menu.enabled = true;
       },
     });
 
@@ -397,7 +398,7 @@ export class NewScript extends BaseScriptComponent {
         }
 
         function playAudio(track: number, onFinish: () => void) {
-          audioPlayer.audioTrack = englishAudioFiles.getTracks()[track];
+          audioPlayer.audioTrack = audioFiles.getTracks()[track];
 
           audioPlayer.setOnFinish(() => {
             setTimeout(() => {
@@ -414,9 +415,9 @@ export class NewScript extends BaseScriptComponent {
             });
           });
         } else {
-          playAudio(10, () => {
-            playAudio(11, () => {
-              playAudio(9, () => {});
+          playAudio(13, () => {
+            playAudio(14, () => {
+              playAudio(15, () => {});
             });
           });
         }
